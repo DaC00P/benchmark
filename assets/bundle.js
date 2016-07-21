@@ -21145,9 +21145,9 @@
 	    this.draw();
 	  },
 	  draw: function draw() {
-	    this.ctx.fillStyle = 'black';
-	    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-	    this.ctx.fillStyle = 'white';
+	    // this.ctx.fillStyle = 'black';
+	    // this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+	    // this.ctx.fillStyle = 'white';
 	    // this.ctx.fillRect(20, 0, 2, this.canvas.height);
 	    // this.ctx.fillRect(0, this.canvas.height - 20, this.canvas.width, 2);
 	    this.drawGraph();

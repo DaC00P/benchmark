@@ -12,7 +12,6 @@ Server.get('/', function(req, res){
 });
 
 Server.post('/api/algos', function(req, res){
-  // res.sendFile(Path.join(__dirname + '/index.html'));
   let data = Controller.receiveCode(req.body);
   res.send(data);
 });
