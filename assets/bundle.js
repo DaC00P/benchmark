@@ -50,8 +50,8 @@
 	var ReactDOM = __webpack_require__(33);
 	// const Graph = require('./graph');
 	// const TextArea = require('./text_area');
-	var Graph = __webpack_require__(197);
-	var TextArea = __webpack_require__(198);
+	var Graph = __webpack_require__(172);
+	var TextArea = __webpack_require__(196);
 	
 	// import { Graph } from './graph';
 	// import { TextArea } from './text_area';
@@ -21107,7 +21107,78 @@
 	module.exports = ReactMount.renderSubtreeIntoContainer;
 
 /***/ },
-/* 172 */,
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _react = __webpack_require__(1);
+	
+	var React = _interopRequireWildcard(_react);
+	
+	var _server_actions = __webpack_require__(173);
+	
+	var ServerActions = _interopRequireWildcard(_server_actions);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	var DataStore = __webpack_require__(178);
+	// import { DataStore } from './stores/data_store';
+	
+	
+	var Graph = React.createClass({
+	  displayName: 'Graph',
+	
+	
+	  //  constructor(props){
+	  //    super(props);
+	  //    this._onChange = this._onChange.bind(this);
+	  //  }
+	
+	  componentDidMount: function componentDidMount() {
+	    this.canvas = document.getElementById('graph');
+	    this.ctx = this.canvas.getContext('2d');
+	    this.draw();
+	    DataStore.addListener(this._onChange);
+	  },
+	  _onChange: function _onChange() {
+	    this.draw();
+	  },
+	  draw: function draw() {
+	    this.ctx.fillStyle = 'black';
+	    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+	    this.ctx.fillStyle = 'white';
+	    // this.ctx.fillRect(20, 0, 2, this.canvas.height);
+	    // this.ctx.fillRect(0, this.canvas.height - 20, this.canvas.width, 2);
+	    this.drawGraph();
+	  },
+	  drawGraph: function drawGraph() {
+	    var data1 = DataStore.get(1);
+	    var ctx = this.ctx;
+	    var canvas = this.canvas;
+	    data1.forEach(function (point) {
+	      ctx.beginPath();
+	      ctx.arc(point.x, canvas.height - point.y, 5, 0, 2 * Math.PI);
+	      ctx.fill();
+	    });
+	
+	    setTimeout(function () {
+	      var data = [{ x: 50, y: 550 }, { x: 150, y: 450 }, { x: 250, y: 350 }, { x: 350, y: 250 }, { x: 450, y: 150 }, { x: 550, y: 50 }];
+	      ServerActions.storeData({ data1: data, data2: [] });
+	    }, 2000);
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { className: 'graph-container' },
+	      React.createElement('canvas', { id: 'graph', width: 600, height: 600 })
+	    );
+	  }
+	});
+	
+	module.exports = Graph;
+
+/***/ },
 /* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -27935,8 +28006,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 196 */,
-/* 197 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27945,79 +28015,7 @@
 	
 	var React = _interopRequireWildcard(_react);
 	
-	var _server_actions = __webpack_require__(173);
-	
-	var ServerActions = _interopRequireWildcard(_server_actions);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	var DataStore = __webpack_require__(178);
-	// import { DataStore } from './stores/data_store';
-	
-	
-	var Graph = React.createClass({
-	  displayName: 'Graph',
-	
-	
-	  //  constructor(props){
-	  //    super(props);
-	  //    this._onChange = this._onChange.bind(this);
-	  //  }
-	
-	  componentDidMount: function componentDidMount() {
-	    this.canvas = document.getElementById('graph');
-	    this.ctx = this.canvas.getContext('2d');
-	    this.draw();
-	    DataStore.addListener(this._onChange);
-	  },
-	  _onChange: function _onChange() {
-	    this.draw();
-	  },
-	  draw: function draw() {
-	    this.ctx.fillStyle = 'black';
-	    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-	    this.ctx.fillStyle = 'white';
-	    // this.ctx.fillRect(20, 0, 2, this.canvas.height);
-	    // this.ctx.fillRect(0, this.canvas.height - 20, this.canvas.width, 2);
-	    this.drawGraph();
-	  },
-	  drawGraph: function drawGraph() {
-	    var data1 = DataStore.get(1);
-	    var ctx = this.ctx;
-	    var canvas = this.canvas;
-	    data1.forEach(function (point) {
-	      ctx.beginPath();
-	      ctx.arc(point.x, canvas.height - point.y, 5, 0, 2 * Math.PI);
-	      ctx.fill();
-	    });
-	
-	    setTimeout(function () {
-	      var data = [{ x: 50, y: 550 }, { x: 150, y: 450 }, { x: 250, y: 350 }, { x: 350, y: 250 }, { x: 450, y: 150 }, { x: 550, y: 50 }];
-	      ServerActions.storeData({ data1: data, data2: [] });
-	    }, 2000);
-	  },
-	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      { className: 'graph-container' },
-	      React.createElement('canvas', { id: 'graph', width: 600, height: 600 })
-	    );
-	  }
-	});
-	
-	module.exports = Graph;
-
-/***/ },
-/* 198 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _react = __webpack_require__(1);
-	
-	var React = _interopRequireWildcard(_react);
-	
-	var _client_actions = __webpack_require__(199);
+	var _client_actions = __webpack_require__(197);
 	
 	var ClientActions = _interopRequireWildcard(_client_actions);
 	
@@ -28093,12 +28091,12 @@
 	module.exports = TextArea;
 
 /***/ },
-/* 199 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var _api_calls = __webpack_require__(200);
+	var _api_calls = __webpack_require__(198);
 	
 	var ApiCalls = _interopRequireWildcard(_api_calls);
 	
@@ -28115,7 +28113,7 @@
 	};
 
 /***/ },
-/* 200 */
+/* 198 */
 /***/ function(module, exports) {
 
 	"use strict";
