@@ -7,7 +7,7 @@ module.exports = {
   receiveCode(codeObj) {
     let method1 = eval(codeObj.algos.method1);
     let method2 = eval(codeObj.algos.method2);
-    let testN = [1000, 2000, 3000, 4000, 5000, 6000];
+    let testN = [1000, 2000, 3000, 4000, 5000, 6000, 7000];
     let results1 = [];
     let results2 = [];
     testN.forEach( (n) => {
@@ -23,10 +23,19 @@ module.exports = {
     // console.log(method2(arr));
     console.log(results1);
     console.log(results2);
+    const data1 = this.transform(results1);
+    const data2 = this.transform(results2);
+
     return {data1: results1, data2: results2};
 
   },
 
+  transform(data){
+    data.forEach( (point, idx) => {
+      point.x = (600 / data.length + 1) * (idx + 1);
+      point.y *= (600 / data.slice(-1).y);
+    });
+  },
 
 
   method2(){
