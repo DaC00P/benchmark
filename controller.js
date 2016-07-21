@@ -1,11 +1,14 @@
-const arrayToSort =
+const SortUtil = require('./sorts');
+
+const arrayToSort = SortUtil.make(1000);
+
 
 module.exports = {
 
 
 
   receiveCode(codeObj) {
-    eval(codeObj.algos.method1.toString());
+    eval(codeObj.algos.method1);
   },
 
 
