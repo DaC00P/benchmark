@@ -4,7 +4,7 @@ import * as ClientActions from '../actions/client_actions';
 const TextArea = React.createClass({
 
   getInitialState(){
-    return {text1: '', text2: ''};
+    return {text1: 'function(array){\n\n}', text2: 'function(array){\n\n}'};
   },
 
   textChange1(evt){
@@ -21,7 +21,8 @@ const TextArea = React.createClass({
 
   handleSubmit(evt){
     evt.preventDefault();
-    const data = {method1: this.state.text1, method2: this.state.text2};
+    const data = {method1: `(${this.state.text1})`, method2: `(${this.state.text2})`};
+    console.log(data);
     ClientActions.sendMethods(data);
   },
 

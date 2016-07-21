@@ -21154,18 +21154,28 @@
 	  },
 	  drawGraph: function drawGraph() {
 	    var data1 = DataStore.get(1);
+	    var data2 = DataStore.get(2);
 	    var ctx = this.ctx;
 	    var canvas = this.canvas;
 	    data1.forEach(function (point) {
+	      ctx.fillStyle = "blue";
 	      ctx.beginPath();
 	      ctx.arc(point.x, canvas.height - point.y, 5, 0, 2 * Math.PI);
 	      ctx.fill();
 	    });
 	
-	    setTimeout(function () {
-	      var data = [{ x: 50, y: 550 }, { x: 150, y: 450 }, { x: 250, y: 350 }, { x: 350, y: 250 }, { x: 450, y: 150 }, { x: 550, y: 50 }];
-	      ServerActions.storeData({ data1: data, data2: [] });
-	    }, 2000);
+	    data2.forEach(function (point) {
+	      ctx.fillStyle = "red";
+	      ctx.beginPath();
+	      ctx.arc(point.x, canvas.height - point.y, 5, 0, 2 * Math.PI);
+	      ctx.fill();
+	    });
+	
+	    //
+	    // setTimeout(function(){
+	    //   let data = [{x: 50, y: 550}, {x: 150, y: 450}, {x: 250, y: 350}, {x: 350, y: 250}, {x: 450, y: 150}, {x: 550, y: 50}]
+	    //   ServerActions.storeData({data1: data, data2: []});
+	    // }, 2000)
 	  },
 	  render: function render() {
 	    return React.createElement(
@@ -21531,7 +21541,8 @@
 	// import { AppDispatcher } from '../dispatcher/dispatcher';
 	var AppDispatcher = __webpack_require__(174);
 	
-	var _data1 = [{ x: 50, y: 50 }, { x: 150, y: 150 }, { x: 250, y: 250 }, { x: 350, y: 350 }, { x: 450, y: 450 }, { x: 550, y: 550 }];
+	// let _data1 = [{x: 50, y: 50}, {x: 150, y: 150}, {x: 250, y: 250}, {x: 350, y: 350}, {x: 450, y: 450}, {x: 550, y: 550}];
+	var _data1 = [];
 	var _data2 = [];
 	
 	var DataStore = new _utils.Store(AppDispatcher);
@@ -21551,6 +21562,7 @@
 	};
 	
 	DataStore.__onDispatch = function (payload) {
+	  // debugger;
 	  switch (payload.actionType) {
 	    case "STORE_RESPONSE":
 	      DataStore.store(payload.data1, payload.data2);
@@ -28024,7 +28036,7 @@
 	var TextArea = React.createClass({
 	  displayName: 'TextArea',
 	  getInitialState: function getInitialState() {
-	    return { text1: '', text2: '' };
+	    return { text1: 'function(array){\n\n}', text2: 'function(array){\n\n}' };
 	  },
 	  textChange1: function textChange1(evt) {
 	    evt.preventDefault();
@@ -28038,7 +28050,8 @@
 	  },
 	  handleSubmit: function handleSubmit(evt) {
 	    evt.preventDefault();
-	    var data = { method1: this.state.text1, method2: this.state.text2 };
+	    var data = { method1: '(' + this.state.text1 + ')', method2: '(' + this.state.text2 + ')' };
+	    console.log(data);
 	    ClientActions.sendMethods(data);
 	  },
 	  handleTab: function handleTab(event) {
