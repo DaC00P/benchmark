@@ -34,18 +34,28 @@ const Graph = React.createClass({
 
   drawGraph(){
     let data1 = DataStore.get(1);
+    let data2 = DataStore.get(2);
     const ctx = this.ctx
     const canvas = this.canvas;
     data1.forEach( (point) => {
+      ctx.fillStyle = "blue"
       ctx.beginPath();
       ctx.arc(point.x, canvas.height - point.y, 5, 0, 2*Math.PI);
       ctx.fill();
     });
 
-    setTimeout(function(){
-      let data = [{x: 50, y: 550}, {x: 150, y: 450}, {x: 250, y: 350}, {x: 350, y: 250}, {x: 450, y: 150}, {x: 550, y: 50}]
-      ServerActions.storeData({data1: data, data2: []});
-    }, 2000)
+    data2.forEach( (point) => {
+      ctx.fillStyle = "red"
+      ctx.beginPath();
+      ctx.arc(point.x, canvas.height - point.y, 5, 0, 2*Math.PI);
+      ctx.fill();
+    });
+
+    //
+    // setTimeout(function(){
+    //   let data = [{x: 50, y: 550}, {x: 150, y: 450}, {x: 250, y: 350}, {x: 350, y: 250}, {x: 450, y: 150}, {x: 550, y: 50}]
+    //   ServerActions.storeData({data1: data, data2: []});
+    // }, 2000)
   },
 
   render(){
