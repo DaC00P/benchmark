@@ -28039,7 +28039,6 @@
 	  handleSubmit: function handleSubmit(evt) {
 	    evt.preventDefault();
 	    var data = { method1: this.state.text1, method2: this.state.text2 };
-	    console.log(data);
 	    ClientActions.sendMethods(data);
 	  },
 	  handleTab: function handleTab(event) {
