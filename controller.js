@@ -13,8 +13,8 @@ module.exports = {
     testN.forEach( (n) => {
       let res1 = SortUtil.benchmark(SortUtil.bubbleSort, n, 10);
       let res2 = SortUtil.benchmark(SortUtil.quickSort, n, 10);
-      results1.push({x: n/10 - 100, y: res1});
-      results2.push({x: n/10 - 100, y: res2});
+      results1.push({x: n/10 - 50, y: res1});
+      results2.push({x: n/10 - 50, y: res2});
     });
     // console.log(codeObj.algos.method1);
     // console.log(codeObj.algos.method2);
