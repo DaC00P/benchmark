@@ -22,7 +22,6 @@ const TextArea = React.createClass({
   handleSubmit(evt){
     evt.preventDefault();
     const data = {method1: this.state.text1, method2: this.state.text2};
-    console.log(data);
     ClientActions.sendMethods(data);
   },
 
