@@ -9,8 +9,9 @@
 
 # Ignore js and node files
 bundle.js
-bundle.js.map
+/assets/bundle.js.map
 node_modules/
+/assets/bundle.js
 
 
 
