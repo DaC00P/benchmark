@@ -28215,11 +28215,14 @@
 	var d3Chart = {};
 	
 	d3Chart.create = function (el, props, state) {
-	  d3.select(el).append("svg").attr("width", props.width).attr("height", props.height).append("circle").attr("cx", 25).attr("cy", 25).attr("r", 25).style("fill", "purple");
+	  d3.select(el).append("svg").attr("width", props.width).attr("height", props.height);
 	};
 	
-	d3Chart.update = function () {
+	d3Chart.update = function (el, data) {
 	  console.log('update');
+	  data.data1.concat(data.data2).forEach(function (point) {
+	    d3.select("svg").append('circle').attr("cx", point.x).attr("cy", point.y).attr("r", 5).style("fill", "purple");
+	  });
 	};
 	
 	module.exports = d3Chart;
