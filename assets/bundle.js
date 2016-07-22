@@ -52,6 +52,7 @@
 	// const TextArea = require('./text_area');
 	var Graph = __webpack_require__(172);
 	var TextArea = __webpack_require__(196);
+	var D3 = __webpack_require__(199);
 	
 	// import { Graph } from './graph';
 	// import { TextArea } from './text_area';
@@ -64,7 +65,8 @@
 	      'div',
 	      { className: 'app-container' },
 	      React.createElement(Graph, null),
-	      React.createElement(TextArea, null)
+	      React.createElement(TextArea, null),
+	      React.createElement(D3, null)
 	    );
 	  }
 	});
@@ -28144,6 +28146,74 @@
 	    });
 	  }
 	};
+
+/***/ },
+/* 199 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _react = __webpack_require__(1);
+	
+	var React = _interopRequireWildcard(_react);
+	
+	var _server_actions = __webpack_require__(173);
+	
+	var ServerActions = _interopRequireWildcard(_server_actions);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	var DataStore = __webpack_require__(178);
+	// import { DataStore } from './stores/data_store';
+	
+	var d3Chart = __webpack_require__(200);
+	
+	var D3Graph = React.createClass({
+	  displayName: 'D3Graph',
+	  componentDidMount: function componentDidMount() {
+	    d3Chart.create();
+	  },
+	  _onChange: function _onChange() {},
+	  draw: function draw() {},
+	  drawGraph: function drawGraph() {},
+	  render: function render() {
+	    return React.createElement('d3Chart', null);
+	  }
+	});
+	
+	module.exports = D3Graph;
+
+/***/ },
+/* 200 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _react = __webpack_require__(1);
+	
+	var React = _interopRequireWildcard(_react);
+	
+	var _server_actions = __webpack_require__(173);
+	
+	var ServerActions = _interopRequireWildcard(_server_actions);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	var DataStore = __webpack_require__(178);
+	// import { DataStore } from './stores/data_store';
+	
+	
+	var d3Chart = {};
+	
+	d3Chart.create = function (el, props, state) {
+	  d3.select("d3chart").append("svg").attr("width", 50).attr("height", 50).append("circle").attr("cx", 25).attr("cy", 25).attr("r", 25).style("fill", "purple");
+	};
+	
+	d3Chart.update = function () {
+	  console.log('update');
+	};
+	
+	module.exports = d3Chart;
 
 /***/ }
 /******/ ]);

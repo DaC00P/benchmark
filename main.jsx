@@ -4,6 +4,7 @@ const ReactDOM = require('react-dom');
 // const TextArea = require('./text_area');
 const Graph = require('./react/components/graph');
 const TextArea = require('./react/components/text_area');
+const D3 = require('./react/components/d3_chart_react');
 
 // import { Graph } from './graph';
 // import { TextArea } from './text_area';
@@ -15,6 +16,7 @@ const App = React.createClass({
       <div className='app-container'>
         <Graph />
         <TextArea />
+        <D3 />
       </div>
     );
   }
