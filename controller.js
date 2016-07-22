@@ -2,6 +2,9 @@ const SortUtil = require('./sorts');
 
 const arrayToSort = SortUtil.make(1000);
 
+const vm  = require('vm');
+
+
 
 module.exports = {
   receiveCode(codeObj) {
@@ -45,7 +48,22 @@ module.exports = {
   },
 
 
-  method2(){
-    console.log('wtf');
+  bootVM() {
+    console.log('in the vm booter');
+    const script = new vm.Script('throw new Error("the vm is running this, bitch!");', {
+      filename: 'my-index.js', // filename for stack traces
+      lineOffset: 1, // line number offset to be used for stack traces
+      columnOffset: 1, // column number offset to be used for stack traces
+      displayErrors: true,
+      timeout: 1000 // ms
+    });
+
+    const sandbox = vm.createContext();
+
+
+    console.time('vm start');
+    script.runInContext(sandbox);
+    console.timeEnd('vm end');
+
   }
 };
