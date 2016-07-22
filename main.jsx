@@ -14,9 +14,8 @@ const App = React.createClass({
   render(){
     return(
       <div className='app-container'>
-        <Graph />
-        <TextArea />
         <D3 />
+        <TextArea />
       </div>
     );
   }

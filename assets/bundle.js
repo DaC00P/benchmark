@@ -64,9 +64,8 @@
 	    return React.createElement(
 	      'div',
 	      { className: 'app-container' },
-	      React.createElement(Graph, null),
-	      React.createElement(TextArea, null),
-	      React.createElement(D3, null)
+	      React.createElement(D3, null),
+	      React.createElement(TextArea, null)
 	    );
 	  }
 	});
@@ -28170,14 +28169,24 @@
 	
 	var D3Graph = React.createClass({
 	  displayName: 'D3Graph',
-	  componentDidMount: function componentDidMount() {
-	    d3Chart.create();
+	  getInitialState: function getInitialState() {
+	    return { data: {} };
 	  },
-	  _onChange: function _onChange() {},
-	  draw: function draw() {},
-	  drawGraph: function drawGraph() {},
+	  componentDidMount: function componentDidMount() {
+	    var el = document.getElementById('chart');
+	    this.listener = DataStore.addListener(this._onChange);
+	    d3Chart.create(el, { height: 600, width: 600, data: this.state.data });
+	  },
+	  _onChange: function _onChange() {
+	    var data = { data1: DataStore.get(1), data2: DataStore.get(2) };
+	    var el = document.getElementById('chart');
+	    d3Chart.update(el, data);
+	  },
+	  componentWillUnmount: function componentWillUnmount() {
+	    this.listener.remove();
+	  },
 	  render: function render() {
-	    return React.createElement('d3Chart', null);
+	    return React.createElement('div', { className: 'chart', id: 'chart' });
 	  }
 	});
 	
@@ -28206,7 +28215,7 @@
 	var d3Chart = {};
 	
 	d3Chart.create = function (el, props, state) {
-	  d3.select("d3chart").append("svg").attr("width", 50).attr("height", 50).append("circle").attr("cx", 25).attr("cy", 25).attr("r", 25).style("fill", "purple");
+	  d3.select(el).append("svg").attr("width", props.width).attr("height", props.height).append("circle").attr("cx", 25).attr("cy", 25).attr("r", 25).style("fill", "purple");
 	};
 	
 	d3Chart.update = function () {

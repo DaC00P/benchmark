@@ -8,25 +8,29 @@ const d3Chart = require('./d3graph');
 
 const D3Graph = React.createClass({
 
-  componentDidMount() {
-    d3Chart.create();
+  getInitialState(){
+    return {data: {}};
+  },
+
+  componentDidMount(){
+    let el = document.getElementById('chart');
+    this.listener = DataStore.addListener(this._onChange);
+    d3Chart.create(el, {height: 600, width: 600, data: this.state.data});
   },
 
   _onChange(){
-
+    const data = {data1: DataStore.get(1), data2: DataStore.get(2)};
+    let el = document.getElementById('chart');
+    d3Chart.update(el, data);
   },
 
-  draw(){
-
-  },
-
-  drawGraph(){
-
+  componentWillUnmount(){
+    this.listener.remove();
   },
 
   render(){
     return(
-      <d3Chart />
+      <div className="chart" id="chart" />
     );
   }
 });

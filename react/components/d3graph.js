@@ -7,11 +7,10 @@ const DataStore = require('../stores/data_store');
 const d3Chart = {};
 
 d3Chart.create = function(el, props, state){
-  d3.select("d3chart").append("svg").attr("width", 50).attr("height", 50).append("circle").attr("cx", 25).attr("cy", 25).attr("r", 25).style("fill", "purple");
+  d3.select(el).append("svg").attr("width", props.width).attr("height", props.height).append("circle").attr("cx", 25).attr("cy", 25).attr("r", 25).style("fill", "purple");
 };
 
-
-d3Chart.update =function(){
+d3Chart.update = function(){
   console.log('update');
 };
 
