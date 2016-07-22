@@ -37,6 +37,9 @@ const ControlPanel = React.createClass({
         <button
           className='demo-sort' id='bubbleSort'
           onClick={this.demoSort}>Bubble Sort</button>
+        <button
+          className='demo-sort' id='quickSort'
+          onClick={this.demoSort}>Quick Sort</button>
 
       </div>
 
