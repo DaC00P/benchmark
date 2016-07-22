@@ -53,6 +53,7 @@
 	var Graph = __webpack_require__(172);
 	var TextArea = __webpack_require__(196);
 	var D3 = __webpack_require__(199);
+	var ControlPanel = __webpack_require__(201);
 	
 	// import { Graph } from './graph';
 	// import { TextArea } from './text_area';
@@ -65,7 +66,8 @@
 	      'div',
 	      { className: 'app-container' },
 	      React.createElement(D3, null),
-	      React.createElement(TextArea, null)
+	      React.createElement(TextArea, null),
+	      React.createElement(ControlPanel, null)
 	    );
 	  }
 	});
@@ -28032,71 +28034,25 @@
 	
 	var ClientActions = _interopRequireWildcard(_client_actions);
 	
+	var _control_panel = __webpack_require__(201);
+	
+	var _control_panel2 = _interopRequireDefault(_control_panel);
+	
+	var _code_form = __webpack_require__(202);
+	
+	var _code_form2 = _interopRequireDefault(_code_form);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	var TextArea = React.createClass({
 	  displayName: 'TextArea',
-	  getInitialState: function getInitialState() {
-	    return { text1: 'function(array){\n\n}', text2: 'function(array){\n\n}' };
-	  },
-	  textChange1: function textChange1(evt) {
-	    evt.preventDefault();
-	    var val = evt.target.value;
-	    this.setState({ text1: val });
-	  },
-	  textChange2: function textChange2(evt) {
-	    evt.preventDefault();
-	    var val = evt.target.value;
-	    this.setState({ text2: val });
-	  },
-	  handleSubmit: function handleSubmit(evt) {
-	    evt.preventDefault();
-	    var data = { method1: '(' + this.state.text1 + ')', method2: '(' + this.state.text2 + ')' };
-	    console.log(data);
-	    ClientActions.sendMethods(data);
-	  },
-	  handleTab: function handleTab(event) {
-	    if (event.keyCode === 9) {
-	      event.preventDefault();
-	      var v = event.target.value;
-	      var s = event.target.selectionStart;
-	      var e = event.target.selectionEnd;
-	      event.target.value = v.substring(0, s) + '\t' + v.substring(e);
-	      this.selectionStart = s + 1;
-	      this.selectionEnd = s + 1;
-	      if (event.target.id === "1") {
-	        this.setState({ text1: event.target.value });
-	      } else {
-	        this.setState({ text2: event.target.value });
-	      }
-	      return false;
-	    }
-	  },
 	  render: function render() {
 	    return React.createElement(
 	      'div',
 	      { className: 'text-pane' },
-	      React.createElement(
-	        'form',
-	        { className: 'text-area', onSubmit: this.handleSubmit },
-	        React.createElement('textarea', { className: 'code-input', id: '1',
-	          placeholder: 'Insert code here...',
-	          value: this.state.text1,
-	          onChange: this.textChange1,
-	          onKeyDown: this.handleTab }),
-	        React.createElement('br', null),
-	        React.createElement('textarea', { className: 'code-input', id: '2',
-	          placeholder: 'Insert code here...',
-	          value: this.state.text2,
-	          onChange: this.textChange2,
-	          onKeyDown: this.handleTab }),
-	        React.createElement('br', null)
-	      ),
-	      React.createElement(
-	        'button',
-	        { className: 'code-submit', onClick: this.handleSubmit },
-	        'Submit'
-	      )
+	      React.createElement(_code_form2.default, null)
 	    );
 	  }
 	});
@@ -28221,11 +28177,154 @@
 	d3Chart.update = function (el, data) {
 	  console.log('update');
 	  data.data1.concat(data.data2).forEach(function (point) {
-	    d3.select("svg").append('circle').attr("cx", point.x).attr("cy", point.y).attr("r", 5).style("fill", "purple");
+	    d3.select("svg").append('circle').attr("cx", point.x).attr("cy", 600 - point.y).attr("r", 5).style("fill", "purple");
 	  });
 	};
 	
 	module.exports = d3Chart;
+
+/***/ },
+/* 201 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _react = __webpack_require__(1);
+	
+	var React = _interopRequireWildcard(_react);
+	
+	var _client_actions = __webpack_require__(197);
+	
+	var ClientActions = _interopRequireWildcard(_client_actions);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	var ControlPanel = React.createClass({
+	  displayName: 'ControlPanel',
+	  getInitialState: function getInitialState() {
+	    return { selected: 1 };
+	  },
+	  selectCheck: function selectCheck(n) {
+	    return this.state.selected === n;
+	  },
+	  selectPane: function selectPane(evt) {
+	    this.setState({ selected: evt.target.id });
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { className: 'control-panel-container' },
+	      React.createElement(
+	        'h4',
+	        null,
+	        'CONTROL PANEL'
+	      ),
+	      React.createElement(
+	        'button',
+	        { className: 'pane-selector', id: '1',
+	          disabled: this.selectCheck(1),
+	          onClick: this.selectPane },
+	        '1'
+	      ),
+	      React.createElement(
+	        'button',
+	        { className: 'pane-selector', id: '2',
+	          disabled: this.selectCheck(2),
+	          onClick: this.selectPane },
+	        '2'
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = ControlPanel;
+
+/***/ },
+/* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _react = __webpack_require__(1);
+	
+	var React = _interopRequireWildcard(_react);
+	
+	var _client_actions = __webpack_require__(197);
+	
+	var ClientActions = _interopRequireWildcard(_client_actions);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	// const ClientActions = require('../actions/client_actions');
+	
+	var CodeForm = React.createClass({
+	  displayName: 'CodeForm',
+	  getInitialState: function getInitialState() {
+	    return { text1: 'function(array){\n\n}', text2: 'function(array){\n\n}' };
+	  },
+	  textChange1: function textChange1(evt) {
+	    evt.preventDefault();
+	    var val = evt.target.value;
+	    this.setState({ text1: val });
+	  },
+	  textChange2: function textChange2(evt) {
+	    evt.preventDefault();
+	    var val = evt.target.value;
+	    this.setState({ text2: val });
+	  },
+	  handleSubmit: function handleSubmit(evt) {
+	    evt.preventDefault();
+	    var data = { method1: '(' + this.state.text1 + ')', method2: '(' + this.state.text2 + ')' };
+	    console.log(data);
+	    ClientActions.sendMethods(data);
+	  },
+	  handleTab: function handleTab(event) {
+	    if (event.keyCode === 9) {
+	      event.preventDefault();
+	      var v = event.target.value;
+	      var s = event.target.selectionStart;
+	      var e = event.target.selectionEnd;
+	      event.target.value = v.substring(0, s) + '\t' + v.substring(e);
+	      this.selectionStart = s + 1;
+	      this.selectionEnd = s + 1;
+	      if (event.target.id === "code-1") {
+	        this.setState({ text1: event.target.value });
+	      } else {
+	        this.setState({ text2: event.target.value });
+	      }
+	      return false;
+	    }
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { className: 'code-form-container' },
+	      React.createElement(
+	        'form',
+	        { className: 'text-area', onSubmit: this.handleSubmit },
+	        React.createElement('textarea', { className: 'code-input', id: 'code-1',
+	          placeholder: 'Insert code here...',
+	          value: this.state.text1,
+	          onChange: this.textChange1,
+	          onKeyDown: this.handleTab }),
+	        React.createElement('br', null),
+	        React.createElement('textarea', { className: 'code-input', id: 'code-2',
+	          placeholder: 'Insert code here...',
+	          value: this.state.text2,
+	          onChange: this.textChange2,
+	          onKeyDown: this.handleTab }),
+	        React.createElement('br', null)
+	      ),
+	      React.createElement(
+	        'button',
+	        { className: 'code-submit', onClick: this.handleSubmit },
+	        'Submit'
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = CodeForm;
 
 /***/ }
 /******/ ]);
