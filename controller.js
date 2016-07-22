@@ -58,7 +58,7 @@ module.exports = {
 
   bootVM() {
     console.log('in the vm booter');
-    const script = new vm.Script("console.log('sandboxtest')", {
+    const script = new vm.Script("var arr = [1, 2, 3]; for (var i = 0; i < arr.length; i++) {console.log(arr[i]);};", {
       filename: 'my-index.js', // filename for stack traces
       lineOffset: 1, // line number offset to be used for stack traces
       columnOffset: 1, // column number offset to be used for stack traces
@@ -67,8 +67,6 @@ module.exports = {
     });
     //put the code to benchmark in the sandbox, then run it in line 79
     const sandbox = vm.createContext({console});
-// {func: "function() {console.log('sandboxtest')} "}
-
 
     console.log('vm start');
 
