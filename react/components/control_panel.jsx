@@ -23,6 +23,7 @@ const ControlPanel = React.createClass({
   },
 
   render(){
+    console.log('from control panel')
     return(
       <div className="control-panel-container">
         <h4>CONTROL PANEL</h4>
