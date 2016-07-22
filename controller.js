@@ -1,4 +1,5 @@
 const SortUtil = require('./sorts');
+const SortUtil2 = require('./sorts0');
 
 const arrayToSort = SortUtil.make(1000);
 
@@ -10,13 +11,14 @@ module.exports = {
   receiveCode(codeObj) {
     let method1 = eval(codeObj.algos.method1);
     let method2 = eval(codeObj.algos.method2);
+    this.receiveTestCode(codeObj);
     // let testN = [1000, 2000, 3000, 4000, 5000, 6000, 7000];
     let testN = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
     let results1 = [];
     let results2 = [];
     testN.forEach( (n) => {
-      let res1 = SortUtil.benchmark(SortUtil.bubbleSort, n, 1000);
-      let res2 = SortUtil.benchmark(SortUtil.quickSort, n, 1000);
+      let res1 = SortUtil.benchmark(method1, n, 1000);
+      let res2 = SortUtil.benchmark(method2, n, 1000);
       results1.push({x: n, y: res1});
       results2.push({x: n, y: res2});
     });
@@ -47,6 +49,12 @@ module.exports = {
     });
   },
 
+  receiveTestCode(codeObj) {
+    let method1 = codeObj.algos.method1;
+    let method2 = codeObj.algos.method2;
+    console.log(method1, method2);
+  },
+
 
   bootVM() {
     console.log('in the vm booter');
@@ -62,7 +70,16 @@ module.exports = {
 
 
     console.time('vm start');
-    script.runInContext(sandbox);
+
+
+    try {
+      script.runInContext(script, sandbox, "loop", 1000);
+      // vm.runInNewContext("while(true) {}", {}, "loop", 1000); example code
+    }
+    catch (e) {
+      // Exception thrown after 1000ms
+      console.log(e);
+    }
     console.timeEnd('vm end');
 
   }
