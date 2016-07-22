@@ -3,7 +3,7 @@ const SortUtil2 = require('./sorts0');
 
 const arrayToSort = SortUtil.make(1000);
 
-// const vm  = require('vm');
+const vm  = require('vm');
 
 
 
@@ -28,15 +28,15 @@ module.exports = {
     // console.log(method1(arr));
     // console.log(method2(arr));
 
-    console.log(results1);
-    console.log(results2);
+    // console.log(results1);
+    // console.log(results2);
     let max = results1.concat(results2).map( res => res.y).sort( (a, b) => a - b ).pop();
     console.log(max);
     this.transform(results1, max);
     this.transform(results2, max);
 
-    console.log(results1);
-    console.log(results2);
+    // console.log(results1);
+    // console.log(results2);
 
     return {data1: results1, data2: results2};
 
@@ -52,35 +52,36 @@ module.exports = {
   receiveTestCode(codeObj) {
     let method1 = codeObj.algos.method1;
     let method2 = codeObj.algos.method2;
-    console.log(method1, method2);
+    this.bootVM();
   },
 
 
-  // bootVM() {
-  //   console.log('in the vm booter');
-  //   const script = new vm.Script('throw new Error("the vm is running this, bitch!");', {
-  //     filename: 'my-index.js', // filename for stack traces
-  //     lineOffset: 1, // line number offset to be used for stack traces
-  //     columnOffset: 1, // column number offset to be used for stack traces
-  //     displayErrors: true,
-  //     timeout: 1000 // ms
-  //   });
-  //
-  //   const sandbox = vm.createContext();
-  //
-  //
-  //   console.time('vm start');
-  //
-  //
-  //   try {
-  //     script.runInContext(script, sandbox, "loop", 1000);
-  //     // vm.runInNewContext("while(true) {}", {}, "loop", 1000); example code
-  //   }
-  //   catch (e) {
-  //     // Exception thrown after 1000ms
-  //     console.log(e);
-  //   }
-  //   console.timeEnd('vm end');
-  //
-  // }
+  bootVM() {
+    console.log('in the vm booter');
+    const script = new vm.Script("console.log('sandboxtest')", {
+      filename: 'my-index.js', // filename for stack traces
+      lineOffset: 1, // line number offset to be used for stack traces
+      columnOffset: 1, // column number offset to be used for stack traces
+      displayErrors: true,
+      timeout: 1000 // ms
+    });
+    //put the code to benchmark in the sandbox, then run it in line 79
+    const sandbox = vm.createContext({console});
+// {func: "function() {console.log('sandboxtest')} "}
+
+
+    console.log('vm start');
+
+
+    try {
+      //this is where the script will get called  to exec
+      script.runInContext(sandbox, {timeout: 5000, displayErrors: true, });
+    }
+    catch (e) {
+      // Exception thrown after 1000ms
+      console.log(e);
+    }
+    console.log('vm end');
+
+  }
 };
