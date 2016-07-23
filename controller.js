@@ -65,10 +65,10 @@ module.exports = {
 
     const worker = new VM({
         timeout: 1000,
-        sandbox: {console}
+        sandbox: {}
     });
 
-    worker.run(`
+    let algo = `
       var arr1 = [5, 4, 3, 2, 1]
       var qs = function quickSort(arr) {
         if (arr.length <= 1) {
@@ -88,10 +88,13 @@ module.exports = {
         }
 
         return this.qs(left).concat([pivot]).concat(this.qs(right));
-      };console.log(qs);
+      };
 
-      console.log(qs(arr1));
-          `);
+      qs(arr1);
+          `;
+
+    let sorted = worker.run(algo);
+    console.log(sorted);
 
 
     // "var arr = [1, 2, 3]; for (var i = 0; i < arr.length; i++) {console.log(arr[i]);};"
