@@ -20,10 +20,10 @@ const ControlPanel = React.createClass({
     let pane = document.getElementById(`code-${this.state.selected}`);
     let text = Library[evt.target.id].toString();
     pane.value = text;
+    pane.setAttribute('value', text);
   },
 
   render(){
-    console.log('from control panel')
     return(
       <div className="control-panel-container">
         <h4>CONTROL PANEL</h4>

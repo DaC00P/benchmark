@@ -3,6 +3,7 @@ import * as ClientActions from '../actions/client_actions';
 
 // const ClientActions = require('../actions/client_actions');
 
+
 const CodeForm = React.createClass({
 
   getInitialState(){
@@ -23,7 +24,10 @@ const CodeForm = React.createClass({
 
   handleSubmit(evt){
     evt.preventDefault();
-    const data = {method1: `(${this.state.text1})`, method2: `(${this.state.text2})`};
+    let el1 = document.getElementById('code-1');
+    let el2 = document.getElementById('code-2');
+    // const data = {method1: `(${this.state.text1})`, method2: `(${this.state.text2})`};
+    const data = {method1: `(${el1.value})`, method2: `(${el2.value})`};
     console.log(data);
     ClientActions.sendMethods(data);
   },

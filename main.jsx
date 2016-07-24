@@ -24,7 +24,6 @@ const App = React.createClass({
 
 });
 
-
 document.addEventListener('DOMContentLoaded', () =>{
   const content = document.getElementById('content');
   ReactDOM.render(<App />, content);
