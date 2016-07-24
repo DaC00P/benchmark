@@ -1,7 +1,7 @@
 const BenchMark = require('./benchmark_consts');
+// var arr1 = maker(10);
 
 const quickSortRec = `
-  var arr1 = maker(100);
   var qs = function quickSort(arr) {
     if (arr.length <= 1) {
       return arr;
@@ -21,12 +21,10 @@ const quickSortRec = `
 
     return this.qs(left).concat([pivot]).concat(this.qs(right));
   };
-
-  qs(arr1);
 `;
 
 const bubbleSortRec = `
-  var arr1 = [5, 4, 3, 2, 1];
+  var arr1 = maker(10);
   var bsr = function bubbleSort(arr) {
     var len = arr.length;
     for (var i = len-1; i>=0; i--){
@@ -48,12 +46,11 @@ const bubbleSortRec = `
 
 module.exports = {
   getQS() {
-    return BenchMark.getArrayMaker() + quickSortRec;
+    return quickSortRec + BenchMark.getArrayMaker() + BenchMark.getBenchMarker();
   },
 
   getBS() {
-    return bubbleSortRec;
+    return BenchMark.getArrayMaker() + bubbleSortRec;
   }
-
 
 };
