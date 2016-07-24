@@ -15,18 +15,18 @@ const testArrayMaker =
 const benchMarker =
   `
     var bm = function benchmark(sortFunc, length, iterations){
-      let arr = this.make(length);
+      let arr = this.maker(length);
       let t = 0;
       for (let i = 0; i < iterations; i++) {
         let a = arr.slice(0);
         let t0 = new Date();
-        sortFunc(a);
+        sortFunc(arr);
         let t1 = new Date();
         t += (t1 - t0);
       }
       return t;
     };
-
+    bm(qs, 1000, 1000);
   `;
 
 module.exports = {
