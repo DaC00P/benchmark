@@ -35,7 +35,7 @@ module.exports = {
     return arr;
   },
 
-  quickSort(arr) {
+  quickSort(arr){
     if (arr.length <= 1) { return arr; }
 
     const pivot = arr[0];
@@ -50,9 +50,9 @@ module.exports = {
       }
     }
 
-    return module.exports.quickSort(left).
+    return this.quickSort(left).
       concat([pivot]).
-      concat(module.exports.quickSort(right));
+      concat(this.quickSort(right));
   },
 
   split(arr){
