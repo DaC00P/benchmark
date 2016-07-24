@@ -1,4 +1,6 @@
+
 module.exports = {
+
   make(n){
     let arr = [];
     for (let i = 0; i < n; i++) {
@@ -9,7 +11,7 @@ module.exports = {
   },
 
   benchmark(sortFunc, length, iterations){
-    let arr = this.make(length);
+    let arr = module.exports.make(length);
     let t = 0;
     for (let i = 0; i < iterations; i++) {
       let a = arr.slice(0);
@@ -50,9 +52,9 @@ module.exports = {
       }
     }
 
-    return this.quickSort(left).
+    return module.exports.quickSort(left).
       concat([pivot]).
-      concat(this.quickSort(right));
+      concat(module.exports.quickSort(right));
   },
 
   split(arr){
@@ -71,7 +73,7 @@ module.exports = {
 
   radixSort(arr){
     let indexArr = [0,0,0,0,0,0,0,0,0,0];
-    let inputs = this.split(arr);
+    let inputs = split(arr);
     let positive = inputs.positive;
     let negative = inputs.negative;
     let posIter = inputs.posIter;
@@ -88,7 +90,6 @@ module.exports = {
 
     console.log(indexArr);
     return(indexArr);
-
   }
 
 };

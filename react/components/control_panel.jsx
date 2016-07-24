@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ClientActions from '../actions/client_actions';
-const Library = require('../../sorts');
+import * as Library from '../../sorts';
 
 const ControlPanel = React.createClass({
 
