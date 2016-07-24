@@ -1,5 +1,7 @@
+const BenchMark = require('./benchmark_consts');
+
 const quickSortRec = `
-  var arr1 = [5, 4, 3, 2, 1];
+  var arr1 = maker(100);
   var qs = function quickSort(arr) {
     if (arr.length <= 1) {
       return arr;
@@ -46,7 +48,7 @@ const bubbleSortRec = `
 
 module.exports = {
   getQS() {
-    return quickSortRec;
+    return BenchMark.getArrayMaker() + quickSortRec;
   },
 
   getBS() {
