@@ -9,7 +9,7 @@ module.exports = {
 
        let worker1 = new VM({
            timeout: 5000,
-           sandbox: {Promise: null}
+           sandbox: {Promise: null, console}
        });
 
        console.log(worker1.run(SearchConstants.getQS()));
