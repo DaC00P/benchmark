@@ -12,6 +12,8 @@ bundle.js
 /assets/bundle.js.map
 node_modules/
 /assets/bundle.js
+/assets/lodash/
+/assets/contour/
 
 
 
