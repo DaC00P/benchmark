@@ -5,7 +5,7 @@ import * as Library from '../../sorts';
 const ControlPanel = React.createClass({
 
   getInitialState(){
-    return {selected: '1'};
+    return {selected: '1', min: 500, max: 32000, tests: 7};
   },
 
   selectCheck(n){
@@ -14,6 +14,19 @@ const ControlPanel = React.createClass({
 
   selectPane(evt){
     this.setState({selected: evt.target.id});
+  },
+
+  setRange(evt){
+    evt.preventDefault();
+    const val = evt.target.value;
+    if(evt.target.id === 'range-min'){this.setState({min: val});}
+    if(evt.target.id === 'range-max'){this.setState({max: val});}
+  },
+
+  setTests(evt){
+    evt.preventDefault();
+    const val = evt.target.value;
+    this.setState({tests: val})
   },
 
   demoSort(evt){
@@ -35,6 +48,18 @@ const ControlPanel = React.createClass({
           className='pane-selector' id='2'
           disabled={this.selectCheck('2')}
           onClick={this.selectPane}>2</button>
+        <input
+          className='range-input' id='range-min'
+          type='number' placeholder='min size'
+          onChange={this.setRange} value={this.state.min} />
+        <input
+          className='range-input' id='range-max'
+          type='number' placeholder='max size'
+          onChange={this.setRange} value={this.state.max} />
+        <input
+          className='num-tests-input' id='num-tests'
+          type='number' placeholder='num tests'
+          onChange={this.setTests} value={this.state.tests} />
         <button
           className='demo-sort' id='bubbleSortRec'
           onClick={this.demoSort}>Bubble Sort</button>
