@@ -18,7 +18,7 @@ const ControlPanel = React.createClass({
 
   demoSort(evt){
     let pane = document.getElementById(`code-${this.state.selected}`);
-    let text = Library[evt.target.id].toString();
+    let text = Library[evt.target.id]();
     pane.value = text;
     pane.setAttribute('value', text);
   },
@@ -36,10 +36,10 @@ const ControlPanel = React.createClass({
           disabled={this.selectCheck('2')}
           onClick={this.selectPane}>2</button>
         <button
-          className='demo-sort' id='bubbleSort'
+          className='demo-sort' id='bubbleSortRec'
           onClick={this.demoSort}>Bubble Sort</button>
         <button
-          className='demo-sort' id='quickSort'
+          className='demo-sort' id='quickSortRec'
           onClick={this.demoSort}>Quick Sort</button>
 
       </div>
