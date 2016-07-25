@@ -23,7 +23,6 @@ const quickSortRec = `
 `;
 
 const bubbleSortRec = `
-  var arr1 = maker(10);
   var bsr = function bubbleSort(arr) {
     var len = arr.length;
     for (var i = len-1; i>=0; i--){

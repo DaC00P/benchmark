@@ -43,6 +43,9 @@ module.exports = {
   },
 
   receiveTestCode(codeObj) {
+    //this is where code will be parsed
+    //array of lengths to test will come in - right now it will be come in as a const. [500, 1000, 2000, 4000, 8000, 16000, 32000]
+    //
     let method1 = codeObj.algos.method1;
     let method2 = codeObj.algos.method2;
     VM.bootVM(method1, method2);
