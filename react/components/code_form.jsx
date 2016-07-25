@@ -7,7 +7,7 @@ import * as ClientActions from '../actions/client_actions';
 const CodeForm = React.createClass({
 
   getInitialState(){
-    return {text1: 'function(array){\n\n}', text2: 'function(array){\n\n}'};
+    return {text1: 'function name(array){\n\n//enter your code here\n//you may change the function name \n//but otherwise do not modify the first line\n\n}', text2: 'function name(array){\n\n//enter your code here\n//you may change the function name \n//but otherwise do not modify the first line\n\n}'};
   },
 
   textChange1(evt){
@@ -22,12 +22,30 @@ const CodeForm = React.createClass({
     this.setState({text2: val});
   },
 
+  makeArr(){
+    let arr = [];
+    const min = parseInt(document.getElementById('range-min').value);
+    const max = parseInt(document.getElementById('range-max').value);
+    const n = parseInt(document.getElementById('num-tests').value);
+    const step = (max - min) / (n - 1);
+    console.log(n, min, max, step);
+    for (let i = 0; i < n; i++) {
+      arr.push( ~~(min + (i * step)) )
+    }
+    return arr;
+  },
+
   handleSubmit(evt){
     evt.preventDefault();
-    let el1 = document.getElementById('code-1');
-    let el2 = document.getElementById('code-2');
+    const el1 = document.getElementById('code-1');
+    const el2 = document.getElementById('code-2');
+    const lengthArr = this.makeArr();
+    const name1 = el1.value.match(/function(.*)\(/)[1].trim()
+    const name2 = el2.value.match(/function(.*)\(/)[1].trim()
+    let method1 = `var ${name1} = ${el1.value}`
+    let method2 = `var ${name2} = ${el2.value}`
     // const data = {method1: `(${this.state.text1})`, method2: `(${this.state.text2})`};
-    const data = {method1: `(${el1.value})`, method2: `(${el2.value})`};
+    const data = {method1: method1, method2: method2, name1: name1, name2: name2, lengthArr: lengthArr};
     console.log(data);
     ClientActions.sendMethods(data);
   },

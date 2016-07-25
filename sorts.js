@@ -93,8 +93,7 @@ module.exports = {
   },
 
   bubbleSortRec(){
-  return `
-  var bsr = function bubbleSort(arr) {
+  return `function bubbleSort(arr) {
     var len = arr.length;
     for (var i = len-1; i>=0; i--){
       for(var j = 1; j<=i; j++){
@@ -106,14 +105,11 @@ module.exports = {
       }
     }
     return arr;
-  };
-
-  bsr(arr1);
-  `
+  };`
   },
 
   quickSortRec(){
-    return `var qs = function quickSort(arr) {
+    return `function quickSort(arr) {
       if (arr.length <= 1) {
         return arr;
       }
@@ -130,7 +126,7 @@ module.exports = {
         }
       }
 
-      return this.qs(left).concat([pivot]).concat(this.qs(right));
+      return this.quickSort(left).concat([pivot]).concat(this.quickSort(right));
     };`;
   }
 
