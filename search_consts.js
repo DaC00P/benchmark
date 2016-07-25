@@ -1,5 +1,4 @@
 const BenchMark = require('./benchmark_consts');
-// var arr1 = maker(10);
 
 const quickSortRec = `
   var qs = function quickSort(arr) {
