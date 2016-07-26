@@ -14,10 +14,7 @@ module.exports = {
     let method1 = codeObj.algos.method1;
     let method2 = codeObj.algos.method2;
     let lengthArr = codeObj.algos.lengthArr;
-    this.testCode(method1, method2, lengthArr);
-
-    //
-
+    return this.testCode(method1, method2, lengthArr);
   },
 
   testCode(method1, method2, lengthArr) {
@@ -35,7 +32,6 @@ module.exports = {
 
     this.transform(results1, max);
     this.transform(results2, max);
-
     return {data1: results1, data2: results2};
   },
 
