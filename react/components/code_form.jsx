@@ -28,9 +28,9 @@ const CodeForm = React.createClass({
     const max = parseInt(document.getElementById('range-max').value);
     const n = parseInt(document.getElementById('num-tests').value);
     const step = (max - min) / (n - 1);
-    console.log(n, min, max, step);
+    // console.log(n, min, max, step);
     for (let i = 0; i < n; i++) {
-      arr.push( ~~(min + (i * step)) )
+      arr.push( ~~(min + (i * step)) );
     }
     return arr;
   },
@@ -40,13 +40,13 @@ const CodeForm = React.createClass({
     const el1 = document.getElementById('code-1');
     const el2 = document.getElementById('code-2');
     const lengthArr = this.makeArr();
-    const name1 = el1.value.match(/function(.*)\(/)[1].trim()
-    const name2 = el2.value.match(/function(.*)\(/)[1].trim()
-    let method1 = `var ${name1} = ${el1.value}`
-    let method2 = `var ${name2} = ${el2.value}`
+    const name1 = el1.value.match(/function(.*)\(/)[1].trim();
+    const name2 = el2.value.match(/function(.*)\(/)[1].trim();
+    let method1 = `var ${name1} = ${el1.value}`;
+    let method2 = `var ${name2} = ${el2.value}`;
     // const data = {method1: `(${this.state.text1})`, method2: `(${this.state.text2})`};
     const data = {method1: method1, method2: method2, name1: name1, name2: name2, lengthArr: lengthArr};
-    console.log(data);
+    // console.log(data);
     ClientActions.sendMethods(data);
   },
 
