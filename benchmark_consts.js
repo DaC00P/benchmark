@@ -26,7 +26,6 @@ const benchMarker =
       }
       return t;
     };
-    bm(qs, 1000, 1000);
   `;
 
 module.exports = {
@@ -34,7 +33,7 @@ module.exports = {
     return testArrayMaker;
   },
 
-  getBenchMarker() {
-    return benchMarker;
+  getBenchMarker(methodName) {
+    return benchMarker + `bm(${methodName}, 1000, 1000)`;
   }
 };
