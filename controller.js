@@ -2,28 +2,28 @@ const SortUtil = require('./sorts');
 const SortUtil2 = require('./sorts0');
 const VM = require('./vm');
 
-const arrayToSort = SortUtil.make(1000);
-
+//list of available VMs, we use vm2
 // const vm  = require('vm');
 // const {VM} = require('vm2');
 // const jailed = require('jailed');
-
 
 module.exports = {
   receiveCode(codeObj) {
     let method1 = codeObj.algos.method1;
     let method2 = codeObj.algos.method2;
+    let methodOneName = codeObj.algos.name1;
+    let methodTwoName = codeObj.algos.name2;
     let lengthArr = codeObj.algos.lengthArr;
-    return this.testCode(method1, method2, lengthArr);
+    return this.testCode(method1, methodOneName, method2, methodTwoName, lengthArr);
   },
 
-  testCode(method1, method2, lengthArr) {
+  testCode(method1, methodOneName, method2, methodTwoName, lengthArr) {
     let results1 = [];
     let results2 = [];
 
     lengthArr.forEach( (n) => {
-      let res1 = VM.bootVM(method1);
-      let res2 = VM.bootVM(method2);
+      let res1 = VM.bootVM(method1, methodOneName);
+      let res2 = VM.bootVM(method2, methodTwoName);
       results1.push({x: n, y: res1});
       results2.push({x: n, y: res2});
     });
@@ -42,10 +42,3 @@ module.exports = {
     });
   }
 };
-
-// let method1 = eval(codeObj.algos.method1);
-// let method2 = eval(codeObj.algos.method2);
-// // let testN = [1000, 2000, 3000, 4000, 5000, 6000, 7000];
-// let testN = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
-// let results1 = [];
-// let results2 = [];
