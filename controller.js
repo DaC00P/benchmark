@@ -30,7 +30,7 @@ module.exports = {
 
     let max = results1.concat(results2).map( res => res.y).sort( (a, b) => a - b ).pop();
 
-    this.transform(results1, max);
+    this.transform(results1, max);pan
     this.transform(results2, max);
     return {data1: results1, data2: results2};
   },
