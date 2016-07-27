@@ -24,29 +24,29 @@ module.exports = {
       \tO(n)</p>`
   },
   quickSortRec(){
-    return `<p>Heap Sort:</p>
-
-
-    <p>Type: Comparrison Sort</p>
+    return `<p>Quick Sort:</p>
+    <p>Type: Comparrison Sort - Unstable</p>
     <p>Time Complexity(w/a/b):<br/>
       \tO(n^2) - O(nlog(n)) - O(nlog(n))</p>
     <p>Space Complexity:<br/>
       \tO(log(n))</p>`
   },
   bubbleSort(){
-    return `<p>Heap Sort:</p>
-
-    
-    <p>Type: Comparrison Sort</p>
+    return `<p>Bubble Sort:</p>
+    <p>Type: Comparrison Sort - Stable</p>
     <p>Time Complexity(w/a/b):<br/>
-      \tO(n) - O(n^2) - O(n^2)</p>
+      \tO(n^2) - O(n^2) - O(n)</p>
     <p>Space Complexity:<br/>
       \tO(1)</p>`
   },
+  countingSort(){
+    return `<p>Counting Sort:</p>
+    <p>Type: Non-Comparison Sort</p>`
+  },
   jsSort(){
     return `<p>Javascript Sort:</p>
-    <p>Type: JS Sort</p>
-    <p>Array.prototype.sort!!</p>`
+    <p>Type: JS Sort !!</p>
+    <p>Array.prototype.sort</p>`
   }
 
 
