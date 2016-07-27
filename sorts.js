@@ -92,7 +92,7 @@ module.exports = {
     return(indexArr);
   },
 
-  bubbleSortRec(){
+  bubbleSort(){
   return `function bubbleSort(arr) {
     var len = arr.length;
     for (var i = len-1; i>=0; i--){

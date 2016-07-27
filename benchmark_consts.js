@@ -34,6 +34,6 @@ module.exports = {
   },
 
   getBenchMarker(methodName) {
-    return benchMarker + `bm(${methodName}, 1000, 1000)`;
+    return benchMarker + `bm(${methodName}, 1000, 1)`;
   }
 };
