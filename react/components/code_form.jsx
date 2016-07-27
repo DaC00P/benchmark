@@ -83,7 +83,6 @@ const CodeForm = React.createClass({
             onChange={this.textChange2}
             onKeyDown={this.handleTab}/><br/>
         </form>
-        <button className="code-submit" onClick={this.handleSubmit}>Submit</button>
       </div>
     );
   }
