@@ -7,7 +7,7 @@ const ReactTooltip = require("react-tooltip");
 const ControlPanel = React.createClass({
 
   getInitialState(){
-    return {selected: '1', min: 500, max: 32000, tests: 7};
+    return {selected: '1', min: 1000, max: 10000, tests: 10};
   },
 
   selectCheck(n){
@@ -82,7 +82,7 @@ const ControlPanel = React.createClass({
             data-tip data-for='bubbleSort'
             onClick={this.demoSort}>Bubble Sort</button>
           <button
-            className='demo-sort' id='quickSort'
+            className='demo-sort' id='quickSortRec'
             data-tip data-for='quickSortRec'
             onClick={this.demoSort}>Quick Sort (rec)</button>
           <button
