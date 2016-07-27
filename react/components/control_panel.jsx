@@ -3,11 +3,24 @@ import * as ClientActions from '../actions/client_actions';
 import * as Library from '../../sorts';
 import * as Hover from '../../hover_text';
 const ReactTooltip = require("react-tooltip");
+const DataStore = require('../stores/data_store');
 
 const ControlPanel = React.createClass({
 
   getInitialState(){
     return {running: false, selected: '1', min: 1000, max: 10000, tests: 10};
+  },
+
+  componentDidMount() {
+    this.listener = DataStore.addListener(this._onChange);
+  },
+
+  componentWillUnmount(){
+    this.listener.remove();
+  },
+
+  _onChange(){
+    this.setState({running: false});
   },
 
   selectCheck(n){
