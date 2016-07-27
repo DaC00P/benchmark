@@ -70,7 +70,7 @@ function quickSort(arr){
     concat(quickSort(right));
 }
 
-const mergeSortIter = function mergeSortIter(array){
+function mergeSortIter(array){
 
   for (let i = 0; i < array.length; i++) {
     array[i] = [array[i]];
@@ -99,8 +99,7 @@ const mergeSortIter = function mergeSortIter(array){
   return array;
 }
 
-const radixSort = function(arr){
-
+function radixSort(arr){
   let iter = 0;
   function step(a, n){
     let max = a[0];

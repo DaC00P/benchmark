@@ -72,12 +72,12 @@ const CodeForm = React.createClass({
     return(
       <div className="code-form-container">
         <form className="text-area" onSubmit={this.handleSubmit}>
-          <textarea className="code-input" id="code-1"
+          <textarea className="code-input left" id="code-1"
             placeholder="Insert code here..."
             value={this.state.text1}
             onChange={this.textChange1}
             onKeyDown={this.handleTab}/><br/>
-          <textarea className="code-input" id="code-2"
+          <textarea className="code-input right" id="code-2"
             placeholder="Insert code here..."
             value={this.state.text2}
             onChange={this.textChange2}
