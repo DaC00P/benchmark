@@ -22,8 +22,8 @@ module.exports = {
     let results2 = [];
 
     lengthArr.forEach( (n) => {
-      let res1 = VM.bootVM(method1, methodOneName);
-      let res2 = VM.bootVM(method2, methodTwoName);
+      let res1 = VM.bootVM(method1, methodOneName, n);
+      let res2 = VM.bootVM(method2, methodTwoName, n);
       results1.push({x: n, y: res1});
       results2.push({x: n, y: res2});
     });
