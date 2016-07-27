@@ -2,12 +2,12 @@ const {VM} = require('vm2');
 const SearchConstants = require('./search_consts');
 
 module.exports = {
-    bootVM(method, methodName) {
+    bootVM(method, methodName, lengthArr) {
      let worker1 = new VM({
-         timeout: 10000,
-         sandbox: {Promise: null, console}
+         timeout: 30000,
+         sandbox: {Promise: null}
      });
-     return worker1.run(SearchConstants.runUserCode(method, methodName));
+     return worker1.run(SearchConstants.runUserCode(method, methodName, lengthArr));
    }
 
 };

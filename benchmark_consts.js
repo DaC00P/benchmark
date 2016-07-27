@@ -33,7 +33,7 @@ module.exports = {
     return testArrayMaker;
   },
 
-  getBenchMarker(methodName) {
-    return benchMarker + `bm(${methodName}, 1000, 1)`;
+  getBenchMarker(methodName, lengthArr) {
+    return benchMarker + `bm(${methodName}, ${lengthArr}, 1)`;
   }
 };
