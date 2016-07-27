@@ -49,6 +49,10 @@ module.exports = {
 
   getBS() {
     return BenchMark.getArrayMaker() + bubbleSortRec;
+  },
+
+  runUserCode(method, methodName) {
+    return method + BenchMark.getArrayMaker() + BenchMark.getBenchMarker(methodName);
   }
 
 };
