@@ -219,7 +219,7 @@ module.exports = {
   },
 
   countingSort(){
-    return `function mapSort(arr){
+    return `function countingSort(arr){
       let map = {};
       let max = arr[0];
       let min = arr[0]
