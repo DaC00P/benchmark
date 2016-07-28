@@ -11,7 +11,6 @@ const yAxis = d3.axisLeft();
 
 d3Chart.create = function(el, props, state){
   d3.select(el).append("svg").attr("width", props.width).attr("height", props.height);
-  d3.select(el).call(xAxis);
 };
 
 d3Chart.mouseover = function(){

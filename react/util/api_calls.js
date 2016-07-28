@@ -7,6 +7,7 @@ module.exports = {
       data: {algos: data},
       dataType: 'json',
       success(resp){
+        console.log(resp);
         action(resp);
       }
     });
