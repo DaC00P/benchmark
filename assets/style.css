@@ -40,23 +40,21 @@ button:hover {
   display: flex;
 }
 
-.code-input {
+/*.code-input {
   position: absolute;
   top: 0px;
   flex: 1;
   max-width: 250px;
   width: 25%;
   height: 85%;
+}*/
+
+.code-input-left {
+  flex: 20%
 }
 
-.code-input.left {
-  left: 0px;
-  margin-right: 600px;
-}
-
-.code-input.right {
-  right: 0px;
-  margin-left: 600px;
+.code-input-right {
+  flex: 20%
 }
 
 .code-submit {
@@ -123,12 +121,13 @@ button:hover {
 }
 
 .code-form-container {
-  height: 100%;
+  display: flex;
+  flex: 20%;
 }
 
 .chart {
-  margin-left: 22.5%;
   border: 1px solid;
+  flex: 60%;
 }
 
 .data-point {
@@ -145,4 +144,13 @@ button:hover {
 
 .data-point.series-2 {
   fill: red;
+}
+
+.upper-container {
+  flex: 100%;
+  display: flex;
+}
+
+.lower-container {
+  flex: 100%;
 }
