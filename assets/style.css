@@ -120,6 +120,10 @@ li {
   height: 57px;
 }
 
+.pane-selector:disabled {
+  background: red;
+}
+
 .range-input {
   padding: 0px;
   display: flex;
