@@ -12,7 +12,8 @@ const CodeForm = React.createClass({
 
   textChange1(evt){
     evt.preventDefault();
-    const val = evt.target.value;
+    let val = evt.target.value;
+    if(val === ''){val = 'function name(array){\n\n}'}
     this.setState({text: val});
   },
 
