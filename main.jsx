@@ -4,6 +4,7 @@ const ReactDOM = require('react-dom');
 // const TextArea = require('./text_area');
 const Graph = require('./react/components/graph');
 const TextArea = require('./react/components/text_area');
+const CodeForm = require('./react/components/code_form');
 const D3 = require('./react/components/d3_chart_react');
 const ControlPanel = require('./react/components/control_panel');
 
@@ -15,9 +16,14 @@ const App = React.createClass({
   render(){
     return(
       <div className='app-container'>
-        <D3 />
-        <TextArea />
-        <ControlPanel />
+        <div className='upper-container' >
+          <CodeForm n={1} />
+          <D3 />
+          <CodeForm n={2} />
+        </div>
+        <div className='lower-container'>
+          <ControlPanel />
+        </div>
       </div>
     );
   }
