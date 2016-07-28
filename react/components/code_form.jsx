@@ -75,7 +75,7 @@ const CodeForm = React.createClass({
       <div className="code-form-container">
         <textarea className={`code-input-${side}`} id={`code-${this.props.n}`}
           placeholder="Insert code here..."
-          value={this.state.text1}
+          value={this.state.text}
           onChange={this.textChange1}
           onKeyDown={this.handleTab}/>
       </div>
