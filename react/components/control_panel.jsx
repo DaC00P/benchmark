@@ -63,6 +63,14 @@ const ControlPanel = React.createClass({
     return arr;
   },
 
+  clearPane(evt){
+    evt.preventDefault();
+    let pane = document.getElementById(`code-${this.state.selected}`);
+    let text = 'function name(array){\n\n}';
+    pane.value = text;
+    pane.setAttribute('value', text);
+  },
+
   handleSubmit(evt){
     evt.preventDefault();
     this.setState({running: true});
@@ -111,6 +119,10 @@ const ControlPanel = React.createClass({
             className='pane-selector' id='2'
             disabled={this.state.running}
             onClick={this.handleSubmit}>RUN TESTS</button>
+            <button
+              className='pane-selector' id='clear'
+              disabled={this.state.running}
+              onClick={this.clearPane}>CLEAR PANE</button>
         </div>
         <div className='library-sorts'>
           <button
