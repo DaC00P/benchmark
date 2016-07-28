@@ -30,15 +30,17 @@ module.exports = {
 
     let max = results1.concat(results2).map( res => res.y).sort( (a, b) => a - b ).pop();
 
-    this.transform(results1, max);
-    this.transform(results2, max);
-    return {data1: results1, data2: results2};
+    let data1 = this.transform(results1, max);
+    let data2 = this.transform(results2, max);
+    return {data1: data1, data2: data2, xAxis: lengthArr, rawData1: results1, rawData2: results2};
   },
 
   transform(data, max){
+    let transformed = [];
     data.forEach( (point, idx) => {
-      point.x = (600 / (data.length + 1)) * (idx + 1);
-      point.y *= (590 / max);
+      let obj = { x: (600 / (data.length + 1)) * (idx + 1), y: point.y * 590/max };
+      transformed.push(obj);
     });
+    return transformed;
   }
 };
