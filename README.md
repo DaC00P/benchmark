@@ -16,13 +16,16 @@ Code is converted sent to the back end as a string and converted into a function
 function is parsed out with regexp and sent as well to provide a reference that allows the user to use recursive calls.
 Data is sent to the API as JSON in the format:
 
-```{
+```JavaScript
+{
   method1: [string, code from code input 1]
   method2: [string, code from code input 2]
   name1: [sting, name from method1]
   name2: [sting, name from method2]
   lengthArr: [int arr, lengths of arrays to test specified by user input in the control panel]
-}```
+}
+
+```
 
 ### Control panel
 
