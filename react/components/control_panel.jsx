@@ -90,7 +90,7 @@ const ControlPanel = React.createClass({
     return(
       <div className="control-panel-container">
         <div className='selector-buttons'>
-          <button
+          <button 
             className='pane-selector' id='1'
             disabled={this.selectCheck('1')}
             onClick={this.selectPane}>LEFT PANE</button>

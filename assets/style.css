@@ -4,22 +4,34 @@ body {
 }
 
 button {
-  border: 1px solid black;
-  border-radius: 3.5px;
-  margin-left: 5px;
-  margin-right: 5px;
-  background-color: #9e9ac8;
+  border: 0px;
+  /*border-radius: 3.5px;*/
+  /*margin-left: 5px;*/
+  /*margin-right: 5px;*/
+  background-color: rgba(0,0,0,0.7);
   color: white;
   font-weight: bold;
   font-size: 16px;
-  max-height: 50px !important;
+  min-height: 53px;
+  box-sizing: border-box;
+  /*max-height: 50px !important;
   max-width: 140px !important;
-  min-width: 138px !important;
+  min-width: 138px !important;*/
 }
 
 button:hover {
-  background-color: #6a51a3;
+  background-color: rgba(0,0,0,1);
+  /*border: 3px solid rgba(255,255,255,1);*/
+  /*box-shadow:inset 0px 0px 0px 1px rgba(255,255,255,1);*/
+  /*box-shadow: 0 0 0 4px white, 0 0px 4px black;*/
+  border-bottom: 3px solid rgba(255,255,255,1);
+  margin-bottom: -1px;
   cursor: pointer;
+}
+
+button:disabled {
+  background-color: rgba(0,0,0,1);
+  box-shadow:inset 0px 0px 0px 3px rgba(255,255,255,1);
 }
 
 .site-title {
@@ -57,8 +69,16 @@ li {
 
 .app-container {
   display: flex;
-  flex-wrap: wrap;
-  position: relative;
+  flex-direction: column;
+}
+
+.upper-container {
+  flex: 1;
+  display: flex;
+}
+
+.lower-container {
+  flex: 1;
 }
 
 .graph-container {
@@ -98,36 +118,36 @@ li {
 .control-panel-container {
   width: 100%;
   border: 1px solid;
-  margin-top: 55px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .button-container {
-
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .selector-buttons {
   display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 5px;
-  margin-top: 5px;
+  flex: 1;
 }
 
 .pane-selector {
-  width: 10%;
-  height: 57px;
+  flex: 1;
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+  justify-content: center;
 }
 
-.pane-selector:disabled {
+/*.pane-selector:disabled {
   background: red;
-}
+}*/
 
 .range-input {
   padding: 0px;
-  display: flex;
-  width: 97%;
+  flex: 1;
 }
 
 .range-input:hover {
@@ -135,9 +155,7 @@ li {
 }
 
 .num-tests-input {
-  padding: 0px;
-  display: flex;
-  width: 97%;
+  flex: 1;
 }
 
 .num-tests-input:hover {
@@ -150,12 +168,16 @@ li {
 }
 
 .demo-sort {
-  height: 50px;
-  width: 12.5%;
+  flex: 1;
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+  justify-content: center;
 }
 
 .library-sorts {
-  margin: 0 auto;
+  display: flex;
+  flex: 1;
 }
 
 .code-form-container {
@@ -182,13 +204,4 @@ li {
 
 .data-point.series-2 {
   fill: red;
-}
-
-.upper-container {
-  flex: 100%;
-  display: flex;
-}
-
-.lower-container {
-  flex: 100%;
 }

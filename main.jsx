@@ -52,16 +52,16 @@ const App = React.createClass({
   },
 
 
-  openModal: function() {
+  openModal() {
     this.setState({modalIsOpen: true});
   },
 
-  afterOpenModal: function() {
+  afterOpenModal() {
     // references are now sync'd and can be accessed.
     this.refs.subtitle.style.color = '#f00';
   },
 
-  closeModal: function() {
+  closeModal() {
     this.setState({modalIsOpen: false});
   },
 
