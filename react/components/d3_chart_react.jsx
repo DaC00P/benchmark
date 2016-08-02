@@ -19,7 +19,7 @@ const D3Graph = React.createClass({
   },
 
   _onChange(){
-    const data = {data1: DataStore.get(1), data2: DataStore.get(2)};
+    const data = DataStore.all();
     let el = document.getElementById('chart');
     d3Chart.update(el, data);
   },
