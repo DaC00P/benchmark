@@ -5,13 +5,42 @@ import * as ServerActions from '../actions/server_actions';
 const DataStore = require('../stores/data_store');
 
 const d3Chart = {};
-const xScale = d3.scaleBand().rangeRound([0, 600]).paddingInner(0.1);
-const xAxis = d3.axisBottom().scale(xScale);
-const yAxis = d3.axisLeft();
+// const xScale = d3.scaleBand().rangeRound([0, 600]).paddingInner(0.1);
+// const xAxis = d3.axisBottom().scale(xScale);
+// const yAxis = d3.axisLeft();
+
+const svgWidth = 600;
+const svgHeight = 600;
+
+const chartMargin = {
+  top:    0.05 * svgWidth,
+  right:  0.05 * svgWidth,
+  bottom: 0.05 * svgWidth,
+  left:   0.05 * svgWidth
+};
+
+
+const chartWidth = svgWidth - (chartMargin.right + chartMargin.left);
+const chartHeight = svgHeight - (chartMargin.top + chartMargin.bottom);
+
+const xScale = d3.scaleBand()
+.rangeRound([0, svgWidth])
+.paddingInner(0.1);
+
+// const chart = svg.append('g')
+//        .attr('class', 'chart')
+//        .attr('transform', `translate(${chartMargin.left},${chartMargin.top})`);
+
 
 d3Chart.create = function(el, props, state){
-  d3.select(el).append("svg").attr("width", props.width).attr("height", props.height);
+  // d3.select(el).append("svg").attr("width", props.width).attr("height", props.height);
+  // .attr('preserveAspectRatio', 'xMinYMin meet')
+  //     .attr('viewBox', `0 0 ${svgWidth} ${svgHeight}`);
+  d3.select(el).append('svg').attr('preserveAspectRatio', 'xMinYMin meet')
+      .attr('viewBox', `0 0 ${svgWidth} ${svgHeight}`);
 };
+
+
 
 d3Chart.mouseover = function(){
   let evt = d3.event;
@@ -47,10 +76,15 @@ d3Chart.update = function(el, data){
   d3.selectAll('circle').remove();
 
   data.data1.forEach( (point, index) => {
-    d3.select("svg").append('circle').attr('class', 'data-point series-1').attr('id', `1-${index}`).attr("cx", point.x).attr("cy", 600 - point.y).attr("r", 5).on('mouseover', d3Chart.mouseover).on('mouseout', d3Chart.mouseout);
+    d3.select("svg").append('circle').attr('class', 'data-point series-1')
+      .attr('id', `1-${index}`).attr("cx", point.x).attr("cy", 600 - point.y)
+      .attr("r", 5).on('mouseover', d3Chart.mouseover).on('mouseout', d3Chart.mouseout);
   });
+
   data.data2.forEach( (point, index) => {
-    d3.select("svg").append('circle').attr('class', 'data-point series-2').attr('id', `2-${index}`).attr("cx", point.x).attr("cy", 600 - point.y).attr("r", 5).on('mouseover', d3Chart.mouseover).on('mouseout', d3Chart.mouseout);
+    d3.select("svg").append('circle').attr('class', 'data-point series-2')
+      .attr('id', `2-${index}`).attr("cx", point.x).attr("cy", 600 - point.y)
+      .attr("r", 5).on('mouseover', d3Chart.mouseover).on('mouseout', d3Chart.mouseout);
   });
 };
 
