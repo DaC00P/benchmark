@@ -41,7 +41,7 @@ module.exports = {
       rawData1: results1,
       rawData2: results2,
       name1: methodOneName,
-      name2: methodTowName
+      name2: methodTwoName
     };
   },
 
