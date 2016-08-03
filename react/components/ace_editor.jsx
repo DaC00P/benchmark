@@ -4,6 +4,8 @@ import ControlPanel from './control_panel';
 import CodeForm from './code_form';
 
 const DefaultText = 'function name(array){\n\n//enter your code here\n//you may change the function name \n//but otherwise do not modify the first line\n\n}'
+const DefaultText2 = 'function name(array){\n\n}'
+
 
 const AceEditor = React.createClass({
 
