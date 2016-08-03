@@ -70,6 +70,7 @@ d3Chart.getAxesInfo = function(data){
 d3Chart.update = function(el, data){
   d3.selectAll('circle').remove();
   d3.selectAll('g.axis').remove();
+  d3.selectAll('text.function-label').remove();
   this.data = data;
   const domains = d3Chart.getAxesInfo(data);
   console.log(domains);
