@@ -82,6 +82,11 @@ d3Chart.update = function(el, data){
   this.chart.append('g').attr('class', 'axis').call(yAxis);
   this.chart.append('g').attr('class', 'axis').attr('transform', `translate(0 ,${chartHeight})`).call(xAxis);
 
+  this.svg.append('text').text(data.name1).attr('class', 'function-label f1')
+          .attr('x', svgWidth * 0.10).attr('y', svgHeight * 0.99);
+  this.svg.append('text').text(data.name2).attr('class', 'function-label f2')
+          .attr('x', svgWidth * 0.80).attr('y', svgHeight * 0.99);
+
   data.rawData1.forEach( (point, index) => {
     this.chart.append('circle').attr('class', 'data-point series-1')
       .attr('id', `1-${index}`).attr("cx", xScale(point.x)).attr("cy", yScale(point.y))
