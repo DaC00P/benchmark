@@ -1,7 +1,9 @@
 {
   "name": "benchmark",
-  "engines":{"node":"6.2.1"},
   "version": "1.0.0",
+  "engines": {
+    "node":"6.2.1"
+  },
   "description": "",
   "main": "main.js",
   "scripts": {
