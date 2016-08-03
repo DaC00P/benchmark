@@ -5,12 +5,9 @@ import * as ServerActions from '../actions/server_actions';
 const DataStore = require('../stores/data_store');
 
 const d3Chart = {};
-// const xScale = d3.scaleBand().rangeRound([0, 600]).paddingInner(0.1);
-// const xAxis = d3.axisBottom().scale(xScale);
-// const yAxis = d3.axisLeft();
 
-const svgWidth = 600;
-const svgHeight = 600;
+const svgWidth = 667;
+const svgHeight = 667;
 
 const chartMargin = {
   top:    0.05 * svgWidth,
@@ -19,25 +16,19 @@ const chartMargin = {
   left:   0.05 * svgWidth
 };
 
-
 const chartWidth = svgWidth - (chartMargin.right + chartMargin.left);
 const chartHeight = svgHeight - (chartMargin.top + chartMargin.bottom);
 
-const xScale = d3.scaleBand()
-.rangeRound([0, svgWidth])
-.paddingInner(0.1);
-
-// const chart = svg.append('g')
-//        .attr('class', 'chart')
-//        .attr('transform', `translate(${chartMargin.left},${chartMargin.top})`);
-
-
 d3Chart.create = function(el, props, state){
-  // d3.select(el).append("svg").attr("width", props.width).attr("height", props.height);
-  // .attr('preserveAspectRatio', 'xMinYMin meet')
-  //     .attr('viewBox', `0 0 ${svgWidth} ${svgHeight}`);
-  d3.select(el).append('svg').attr('preserveAspectRatio', 'xMinYMin meet')
+
+  this.svg = d3.select(el).append('svg').attr('preserveAspectRatio', 'xMinYMin meet')
       .attr('viewBox', `0 0 ${svgWidth} ${svgHeight}`);
+  this.chart = this.svg.append('g').attr('class', 'chart-display')
+        .attr('transform', `translate(${chartMargin.left},${chartMargin.top})`);
+  this.chart.append('g').attr('class', 'axis x')
+            .attr('transform', `translate(0,${chartHeight})`);
+  this.chart.append('g').attr('class', 'axis y').selectAll('text').style('text-anchor', 'end');
+
 };
 
 
@@ -69,21 +60,42 @@ d3Chart.getText = function(target){
   return {line1: `Length: ${data.x}`, line2: `Time: ${data.y}ms`};
 }
 
+d3Chart.getAxesInfo = function(data){
+  let xDomain = [data.xAxis[0], data.xAxis[data.xAxis.length - 1]];
+  let yDomain = [data.rawData1[0].y, data.rawData1[0].y];
+  data.rawData1.concat(data.rawData2).forEach( (point) => {
+    if(point.y > yDomain[1]){yDomain[1] = point.y}
+    if(point.y < yDomain[0]){yDomain[0] = point.y}
+  });
+  return {xDomain: xDomain, yDomain: yDomain};
+}
+
 
 d3Chart.update = function(el, data){
-  console.log('data');
-  this.data = data;
   d3.selectAll('circle').remove();
+  this.data = data;
+  const domains = d3Chart.getAxesInfo(data);
+  console.log(domains);
+  const xScale = d3.scaleLinear().range([0, chartWidth]).domain(domains.xDomain);
+  const yScale = d3.scaleLinear().range([chartHeight, 0]).domain(domains.yDomain);
 
-  data.data1.forEach( (point, index) => {
-    d3.select("svg").append('circle').attr('class', 'data-point series-1')
-      .attr('id', `1-${index}`).attr("cx", point.x).attr("cy", 600 - point.y)
+  const xAxis = d3.axisBottom().scale(xScale);
+  const yAxis = d3.axisLeft().scale(yScale);
+
+  this.chart.append('g').call(yAxis);
+  this.chart.append('g').attr('transform', `translate(0 ,${chartHeight})`).call(xAxis);
+
+  debugger;
+
+  data.rawData1.forEach( (point, index) => {
+    this.chart.append('circle').attr('class', 'data-point series-1')
+      .attr('id', `1-${index}`).attr("cx", xScale(point.x)).attr("cy", yScale(point.y))
       .attr("r", 5).on('mouseover', d3Chart.mouseover).on('mouseout', d3Chart.mouseout);
   });
 
-  data.data2.forEach( (point, index) => {
-    d3.select("svg").append('circle').attr('class', 'data-point series-2')
-      .attr('id', `2-${index}`).attr("cx", point.x).attr("cy", 600 - point.y)
+  data.rawData2.forEach( (point, index) => {
+    this.chart.append('circle').attr('class', 'data-point series-2')
+      .attr('id', `2-${index}`).attr("cx", xScale(point.x)).attr("cy", yScale(point.y))
       .attr("r", 5).on('mouseover', d3Chart.mouseover).on('mouseout', d3Chart.mouseout);
   });
 };
