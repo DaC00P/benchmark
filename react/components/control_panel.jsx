@@ -45,10 +45,11 @@ const ControlPanel = React.createClass({
   },
 
   demoSort(evt){
-    let pane = document.getElementById(`code-${this.state.selected}`);
+    let pane = document.getElementById(`editor-${this.state.selected}`);
     let text = Library[evt.target.id]();
-    pane.value = text;
-    pane.setAttribute('value', text);
+    // pane.value = text;
+    // pane.setAttribute('value', text);
+    ace.edit(pane).getSession().setValue(text);
   },
 
   makeArr(){
@@ -90,7 +91,7 @@ const ControlPanel = React.createClass({
     return(
       <div className="control-panel-container">
         <div className='selector-buttons'>
-          <button 
+          <button
             className='pane-selector' id='1'
             disabled={this.selectCheck('1')}
             onClick={this.selectPane}>LEFT PANE</button>

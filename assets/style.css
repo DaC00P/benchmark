@@ -206,3 +206,9 @@ li {
 .data-point.series-2 {
   fill: red;
 }
+
+.editor {
+  /* height: 200px; */
+  /* width: 200px; */
+  flex: 20%;
+}
