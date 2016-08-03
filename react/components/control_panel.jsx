@@ -52,6 +52,12 @@ const ControlPanel = React.createClass({
     ace.edit(pane).getSession().setValue(text);
   },
 
+  //opens instruction modal
+  showInstructions(evt){
+    evt.preventDefault();
+    console.log('INSTRUCTIONS');
+  },
+
   // makes int array of test lengths from specified user inputs
   makeArr(){
     let arr = [];
@@ -127,8 +133,10 @@ const ControlPanel = React.createClass({
             onClick={this.handleSubmit}>RUN TESTS</button>
             <button
               className='pane-selector' id='clear'
-              disabled={this.state.running}
               onClick={this.clearPane}>CLEAR PANE</button>
+            <button
+              className='pane-selector' id='instructions'
+              onClick={this.showInstructions}>INSTRUCTIONS</button>
         </div>
         <div className='library-sorts'>
           <button
@@ -191,8 +199,8 @@ const HoverStash = React.createClass({
         <ReactTooltip id='jsSort'>
           <Tool sort={'jsSort'} />
         </ReactTooltip>
-        <ReactTooltip id='contingSort'>
-          <Tool sort={'contingSort'} />
+        <ReactTooltip id='countingSort'>
+          <Tool sort={'countingSort'} />
         </ReactTooltip>
         <ReactTooltip id="max-length">Maximium Array Length</ReactTooltip>
         <ReactTooltip id="min-length">Minimum Array Length</ReactTooltip>

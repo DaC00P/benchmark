@@ -41,7 +41,14 @@ module.exports = {
   },
   countingSort(){
     return `<p>Counting Sort:</p>
-    <p>Type: Non-Comparison Sort</p>`
+    <p>Type: Non-Comparison Sort</p>
+    <p>Time Complexity:<br/>
+    O(n + m)</br>
+    n = array length</br>
+    m = array.max - array.min</p>
+    <p>Space Complexity:<br/>
+      \tO(m)</p>`
+
   },
   jsSort(){
     return `<p>Javascript Sort:</p>
