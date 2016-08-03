@@ -1,3 +1,5 @@
+'use strict';
+
 const BenchMark = require('./benchmark_consts');
 
 const quickSortRec = `
