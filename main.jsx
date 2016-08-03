@@ -90,7 +90,6 @@ const App = React.createClass({
   }
 
 });
-// <CodeForm n={1} />
 
 document.addEventListener('DOMContentLoaded', () =>{
   const content = document.getElementById('content');
