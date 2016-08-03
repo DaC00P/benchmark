@@ -188,7 +188,7 @@ li {
 
 .chart {
   border: 1px solid;
-  flex: 60%;
+  flex: 50%;
 }
 
 .data-point {
@@ -210,5 +210,5 @@ li {
 .editor {
   /* height: 200px; */
   /* width: 200px; */
-  flex: 20%;
+  flex: 25%;
 }

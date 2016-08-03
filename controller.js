@@ -34,7 +34,15 @@ module.exports = {
 
     let data1 = this.transform(results1, max);
     let data2 = this.transform(results2, max);
-    return {data1: data1, data2: data2, xAxis: lengthArr, rawData1: results1, rawData2: results2};
+    return {
+      data1: data1,
+      data2: data2,
+      xAxis: lengthArr,
+      rawData1: results1,
+      rawData2: results2,
+      name1: methodOneName,
+      name2: methodTowName
+    };
   },
 
   transform(data, max){
