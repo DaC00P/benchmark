@@ -10,6 +10,7 @@ const D3 = require('./react/components/d3_chart_react');
 const ControlPanel = require('./react/components/control_panel');
 const Modal = require('react-modal');
 const WelcomeMessage = require('./react/components/welcome_message');
+const AceEditor = require('./react/components/ace_editor');
 
 // import { Graph } from './graph';
 // import { TextArea } from './text_area';
@@ -75,9 +76,9 @@ const App = React.createClass({
           </Modal>
         </div>
         <div className='upper-container' >
-          <CodeForm n={1} />
+          <AceEditor n={1}/>
           <D3 />
-          <CodeForm n={2} />
+          <AceEditor n={2} />
         </div>
         <div className='lower-container'>
           <ControlPanel />
@@ -88,6 +89,7 @@ const App = React.createClass({
   }
 
 });
+// <CodeForm n={1} />
 
 document.addEventListener('DOMContentLoaded', () =>{
   const content = document.getElementById('content');

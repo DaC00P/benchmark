@@ -54,16 +54,18 @@ const CodeForm = React.createClass({
   handleTab(event){
     if(event.keyCode === 9){
       event.preventDefault();
+      console.log(event.target.id);
       let v = event.target.value;
       let s = event.target.selectionStart;
       let e = event.target.selectionEnd;
-      event.target.value = v.substring(0, s)+'\t'+v.substring(e);
-      this.selectionStart = s + 1;
-      this.selectionEnd = s + 1;
+      debugger;
+      event.target.value = v.substring(0, s)+'   '+v.substring(e);
+      this.selectionStart = s + 3;
+      this.selectionEnd = s + 3;
       if(event.target.id === "code-1"){
-        this.setState({ text1: event.target.value});
+        this.setState({text1: event.target.value});
       } else {
-        this.setState({ text2: event.target.value});
+        this.setState({text2: event.target.value});
       }
       return false;
     }
@@ -86,9 +88,3 @@ const CodeForm = React.createClass({
 });
 
 module.exports = CodeForm;
-
-// <textarea className="code-input right" id="code-2"
-//   placeholder="Insert code here..."
-//   value={this.state.text2}
-//   onChange={this.textChange2}
-//   onKeyDown={this.handleTab}/><br/>
