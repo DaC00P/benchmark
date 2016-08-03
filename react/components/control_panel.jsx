@@ -52,6 +52,7 @@ const ControlPanel = React.createClass({
     ace.edit(pane).getSession().setValue(text);
   },
 
+  // makes int array of test lengths from specified user inputs
   makeArr(){
     let arr = [];
     const min = parseInt(document.getElementById('range-min').value);
@@ -74,14 +75,19 @@ const ControlPanel = React.createClass({
 
   handleSubmit(evt){
     evt.preventDefault();
+    //disables 'run tests button'
     this.setState({running: true});
-    const el1 = document.getElementById('code-1');
-    const el2 = document.getElementById('code-2');
+    //gets Ace Editor elements and values
+    const el1 = document.getElementById('editor-1');
+    const el2 = document.getElementById('editor-2');
+    const value1 = ace.edit(el1).getSession().getValue();
+    const value2 = ace.edit(el2).getSession().getValue();
     const lengthArr = this.makeArr();
-    const name1 = el1.value.match(/function(.*)\(/)[1].trim();
-    const name2 = el2.value.match(/function(.*)\(/)[1].trim();
-    let method1 = `var ${name1} = ${el1.value}`;
-    let method2 = `var ${name2} = ${el2.value}`;
+    //parses out declared function name
+    const name1 = value1.match(/function(.*)\(/)[1].trim();
+    const name2 = value2.match(/function(.*)\(/)[1].trim();
+    let method1 = `var ${name1} = ${value1}`;
+    let method2 = `var ${name2} = ${value2}`;
     const data = {method1: method1, method2: method2, name1: name1, name2: name2, lengthArr: lengthArr};
     ClientActions.sendMethods(data);
     console.log(data);
@@ -163,13 +169,7 @@ const ControlPanel = React.createClass({
 
 });
 
-// <div className='test-setup'>
-//   <div className='selector-buttons'>
-//     <button
-//       className='pane-selector' id='run'
-//       disabled={false} />
-//   </div>
-// </div>
+//holds tooltip objects
 const HoverStash = React.createClass({
   render(){
     return(
@@ -203,6 +203,7 @@ const HoverStash = React.createClass({
   }
 });
 
+//makes tooltip content
 const Tool = React.createClass({
   render(){
 
