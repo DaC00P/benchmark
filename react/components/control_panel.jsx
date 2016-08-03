@@ -67,10 +67,9 @@ const ControlPanel = React.createClass({
 
   clearPane(evt){
     evt.preventDefault();
-    let pane = document.getElementById(`code-${this.state.selected}`);
+    let pane = document.getElementById(`editor-${this.state.selected}`);
     let text = 'function name(array){\n\n}';
-    pane.value = text;
-    pane.setAttribute('value', text);
+    ace.edit(pane).getSession().setValue(text);
   },
 
   handleSubmit(evt){

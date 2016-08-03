@@ -26,7 +26,7 @@ DataStore.store = function(payload){
 }
 
 DataStore.__onDispatch = function(payload){
-  // debugger;
+  debugger;
   switch(payload.actionType){
     case "STORE_RESPONSE":
       DataStore.store(payload);
