@@ -19,6 +19,6 @@ Server.post('/api/algos', function(req, res){
 });
 
 
-Server.listen(8000, function(){
+Server.listen(process.env.PORT, function(){
   console.log('Server Running');
 });
