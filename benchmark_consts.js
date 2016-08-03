@@ -12,6 +12,7 @@ const testArrayMaker =
     };
   `;
 
+//TO-DO upgrade to Performance.now or similar time counter that more precise
 const benchMarker =
   `
     var bm = function benchmark(sortFunc, length, iterations){

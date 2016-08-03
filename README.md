@@ -1,8 +1,8 @@
 # Algo Arena
 
-<!-- [Algo Arena live][live_url] -->
+[Algo Arena live][live_url]
 
-<!-- [live_url]: http://www.google.com -->
+[live_url]: https://cryptic-tundra-51153.herokuapp.com/
 
 Algo Arena is a full stack web application that allows users to input their own sort algorithms and benchmark them.  
 It utilizes Node.js & Express server on the backend and React.js and D3 with flux architecture on the front end.    

@@ -1,3 +1,5 @@
+'use strict';
+
 const SortUtil = require('./sorts');
 const SortUtil2 = require('./sorts0');
 const VM = require('./vm');
