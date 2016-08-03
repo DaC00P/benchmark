@@ -8,7 +8,8 @@ button {
   /*border-radius: 3.5px;*/
   /*margin-left: 5px;*/
   /*margin-right: 5px;*/
-  background-color: rgba(0,0,0,0.7);
+  /*background-color: rgba(0,0,0,0.7);*/
+  background-color: #232323;
   color: white;
   font-weight: bold;
   font-size: 16px;
@@ -118,7 +119,6 @@ li {
 
 .control-panel-container {
   width: 100%;
-  border: 1px solid;
   display: flex;
   flex-direction: column;
 }
@@ -187,8 +187,9 @@ li {
 }
 
 .chart {
-  border: 1px solid;
-  flex: 50%;
+  /*border: 1px solid;*/
+  flex: 2;
+  background: black;
 }
 
 .data-point {
@@ -200,15 +201,47 @@ li {
 }
 
 .data-point.series-1 {
-  fill: purple;
+  fill: #7587A6;
 }
 
 .data-point.series-2 {
-  fill: red;
+  fill: #CF6A4C;
 }
 
 .editor {
   /* height: 200px; */
   /* width: 200px; */
-  flex: 25%;
+  flex: 1;
+}
+
+.axis {
+  stroke: #ffffff;
+  font-size: 16px;
+}
+
+.axis path {
+  stroke: #ffffff;
+  fill: none;
+}
+
+.axis line {
+  stroke: #ffffff;
+  fill: none;
+}
+
+.axis .tick text {
+  fill: #ffffff;
+  stroke: none;
+}
+
+.hover-text {
+  /*stroke: #ffffff;*/
+  fill: #ffffff;
+  font-size: 16px;
+}
+
+.axis-label {
+  font-size: 16px;
+  fill: #ffffff;
+  stroke: none;
 }
