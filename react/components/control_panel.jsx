@@ -55,7 +55,7 @@ const ControlPanel = React.createClass({
   //opens instruction modal
   showInstructions(evt){
     evt.preventDefault();
-    console.log('INSTRUCTIONS');
+    this.props.openInstructionModal();
   },
 
   // makes int array of test lengths from specified user inputs

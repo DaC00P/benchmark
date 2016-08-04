@@ -31,15 +31,16 @@ const WelcomeMessage = React.createClass({
   chooseStepComponent() {
     switch (this.state.siteDescriptionNumber) {
       case 1:
-        // console.log(1);
         return <SiteDescriptionOne/>;
       case 2:
-        // console.log(2);
         return <SiteDescriptionTwo/>;
       case 3:
-        // console.log(2);
         return <SiteDescriptionThree/>;
     }
+  },
+
+  runDemo() {
+    console.log('run the demo!');
   },
 
   render(){
@@ -53,6 +54,7 @@ const WelcomeMessage = React.createClass({
         <button className='pane-selector prev-button' onClick={this.previousInstructions}> Previous </button>
         <button className='pane-selector next-button' onClick={this.nextInstructions}> Next </button>
         <button className='pane-selector close-button' onClick={this.props.closeModal}> Close & Start Testing! </button>
+        <button className='pane-selector demo-button' onClick={this.runDemo}> Run Demo </button>
         <br></br>
       </div>
     );
