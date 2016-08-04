@@ -7,23 +7,52 @@ const SiteDescriptionThree = require('./site_description_stepthree');
 const WelcomeMessage = React.createClass({
   getInitialState() {
     return{
-      siteDescription: 1
+      siteDescriptionNumber: 1
     };
   },
 
-  changeDescriptionStep(step) {
-    this.setState({siteDescription: step});
+  previousInstructions() {
+    let newStateNum = this.state.siteDescriptionNumber - 1;
+    if (newStateNum < 1) {
+      newStateNum = 1;
+    }
+    this.setState({siteDescriptionNumber: newStateNum});
+  },
+
+  nextInstructions() {
+    let newStateNum = this.state.siteDescriptionNumber + 1;
+    if (newStateNum > 3) {
+      newStateNum = 3;
+    }
+    console.log(newStateNum);
+    this.setState({siteDescriptionNumber: newStateNum});
+  },
+
+  chooseStepComponent() {
+    switch (this.state.siteDescriptionNumber) {
+      case 1:
+        // console.log(1);
+        return <SiteDescriptionOne/>;
+      case 2:
+        // console.log(2);
+        return <SiteDescriptionTwo/>;
+      case 3:
+        // console.log(2);
+        return <SiteDescriptionThree/>;
+    }
   },
 
   render(){
-    let description = this.state.description;
-    let previousStep = this.state.siteDescription - 1;
-    let nextStep = this.state.siteDescription + 1;
+    let description = this.chooseStepComponent();
+
     return(
       <div className='site-desc-full'>
         <h2 className="welcome-header">Welcome to Algo Arena!!</h2>
-        <SiteDescriptionOne/>
+        {description}
 
+        <button className='pane-selector prev-button' onClick={this.previousInstructions}> Previous </button>
+        <button className='pane-selector next-button' onClick={this.nextInstructions}> Next </button>
+        <button className='pane-selector close-button' onClick={this.props.closeModal}> Close & Start Testing! </button>
         <br></br>
       </div>
     );
@@ -31,10 +60,5 @@ const WelcomeMessage = React.createClass({
 
 });
 
-// <button className='pane-selector prev-button' onClick={this.changeDescriptionStep().bind(this)}> Previous </button>
-// <button className='pane-selector next-button' onClick={this.props.closeModal}> Next </button>
-// <button className='pane-selector close-button' onClick={this.props.closeModal}> Close & Start Testing! </button>
 
 module.exports = WelcomeMessage;
-
-// <img className="arena" src="http://vignette3.wikia.nocookie.net/adventuretimewithfinnandjake/images/8/8a/Screen_shot_2014-08-17_at_3.38.02_PM.png/revision/latest?cb=20140817075739"></img>
