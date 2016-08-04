@@ -5,9 +5,17 @@ const SiteDescriptionThree = React.createClass({
   render(){
     return(
       <div>
-        <p className='description-text'>
-          
-        </p>
+        <div>
+          <h2 className='welcome-text'>Examples!</h2>
+          <div className='step-three'>
+            <p>
+              bubblesort example
+            </p>
+            <p>
+              quicksort example
+            </p>
+          </div>
+        </div>
       </div>
     );
   }
