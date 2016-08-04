@@ -24,9 +24,6 @@ const WelcomeMessage = React.createClass({
         <h2 className="welcome-header">Welcome to Algo Arena!!</h2>
         <SiteDescriptionOne/>
 
-        <button className='pane-selector prev-button' onClick={this.changeDescriptionStep().bind(this)}> Previous </button>
-        <button className='pane-selector next-button' onClick={this.props.closeModal}> Next </button>
-        <button className='pane-selector close-button' onClick={this.props.closeModal}> Close & Start Testing! </button>
         <br></br>
       </div>
     );
@@ -34,6 +31,9 @@ const WelcomeMessage = React.createClass({
 
 });
 
+// <button className='pane-selector prev-button' onClick={this.changeDescriptionStep().bind(this)}> Previous </button>
+// <button className='pane-selector next-button' onClick={this.props.closeModal}> Next </button>
+// <button className='pane-selector close-button' onClick={this.props.closeModal}> Close & Start Testing! </button>
 
 module.exports = WelcomeMessage;
 
