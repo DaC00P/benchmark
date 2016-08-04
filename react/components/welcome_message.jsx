@@ -48,14 +48,16 @@ const WelcomeMessage = React.createClass({
 
     return(
       <div className='site-desc-full'>
-        <h2 className="welcome-header">Welcome to Algo Arena!!</h2>
+
         {description}
 
-        <button className='pane-selector prev-button' onClick={this.previousInstructions}> Previous </button>
-        <button className='pane-selector next-button' onClick={this.nextInstructions}> Next </button>
-        <button className='pane-selector close-button' onClick={this.props.closeModal}> Close & Start Testing! </button>
-        <button className='pane-selector demo-button' onClick={this.runDemo}> Run Demo </button>
-        <br></br>
+        <div className='modal-panel-container'>
+          <button className='pane-selector modal-button' onClick={this.previousInstructions}> Previous </button>
+          <button className='pane-selector modal-button' onClick={this.props.closeModal}> Close & Start Testing! </button>
+          <button className='pane-selector modal-button' onClick={this.runDemo}> Run Demo </button>
+          <button className='pane-selector modal-button' onClick={this.nextInstructions}> Next </button>
+        </div>
+
       </div>
     );
   }
