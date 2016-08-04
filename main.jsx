@@ -4,9 +4,9 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 // const Graph = require('./graph');
 // const TextArea = require('./text_area');
-const Graph = require('./react/components/graph');
-const TextArea = require('./react/components/text_area');
-const CodeForm = require('./react/components/code_form');
+// const Graph = require('./react/components/graph');
+// const TextArea = require('./react/components/text_area');
+// const CodeForm = require('./react/components/code_form');
 const D3 = require('./react/components/d3_chart_react');
 const ControlPanel = require('./react/components/control_panel');
 const Modal = require('react-modal');
@@ -45,9 +45,7 @@ const customStyle = {
 
 const App = React.createClass({
   getInitialState() {
-    return {
-      modalIsOpen: true,
-    };
+    return {modalIsOpen: true };
   },
 
   componentWillMount(){
