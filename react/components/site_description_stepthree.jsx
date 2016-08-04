@@ -5,7 +5,9 @@ const SiteDescriptionThree = React.createClass({
   render(){
     return(
       <div>
-        <p>STEP 2, YO!</p>
+        <p className='description-text'>
+          
+        </p>
       </div>
     );
   }

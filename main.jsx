@@ -81,7 +81,7 @@ const App = React.createClass({
           <AceEditor n={2} />
         </div>
         <div className='lower-container'>
-          <ControlPanel />
+          <ControlPanel openInstructionModal={this.openModal}/>
         </div>
         <footer> Informative Footer Goes Here, with our github and linkedin</footer>
       </div>
