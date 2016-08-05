@@ -4,7 +4,7 @@ const ReactDOM = require('react-dom');
 const SiteDescriptionTwo = React.createClass({
   render(){
     return(
-      <div className='steptwo-container'>
+      <div className='modal-container two'>
         <h2 className='welcome-text'>Instructions!</h2>
         <div className='step-two'>
           <ul className='description-text'>
