@@ -81,10 +81,6 @@ const WelcomeMessage = React.createClass({
     return prevButton;
   },
 
-  runDemo() {
-    console.log('run the demo!');
-  },
-
   render(){
     let description = this.chooseStepComponent();
     let nextButton = this.nextButtonChoice();

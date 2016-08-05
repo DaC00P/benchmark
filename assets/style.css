@@ -145,6 +145,10 @@ li {
   justify-content: center;
 }
 
+.pane-selector:focus {
+ outline: none;
+}
+
 .range-input {
   padding: 0px;
   flex: 1;
@@ -173,6 +177,10 @@ li {
   margin: 0px;
   padding: 0px;
   justify-content: center;
+}
+
+.demo-sort {
+  outline: none;
 }
 
 .library-sorts {
