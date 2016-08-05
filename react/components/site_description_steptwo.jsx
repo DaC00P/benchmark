@@ -4,7 +4,7 @@ const ReactDOM = require('react-dom');
 const SiteDescriptionTwo = React.createClass({
   render(){
     return(
-      <div>
+      <div className='steptwo-container'>
         <h2 className='welcome-text'>Instructions!</h2>
         <div className='step-two'>
           <ul className='description-text'>
@@ -25,7 +25,7 @@ const SiteDescriptionTwo = React.createClass({
             </li>
           </ul>
         </div>
-        <img style={{'margin': '0 auto'}} src='http://i.stack.imgur.com/lXZkh.png'></img>
+        <img className='steptwo-img' style={{'margin': '0 auto'}} src='http://i.stack.imgur.com/lXZkh.png'></img>
       </div>
     );
   }
