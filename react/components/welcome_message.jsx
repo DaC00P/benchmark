@@ -24,7 +24,7 @@ const WelcomeMessage = React.createClass({
     if (newStateNum > 3) {
       newStateNum = 3;
     }
-    console.log(newStateNum);
+
     this.setState({siteDescriptionNumber: newStateNum});
   },
 
@@ -45,19 +45,24 @@ const WelcomeMessage = React.createClass({
 
   render(){
     let description = this.chooseStepComponent();
+    let nextButton = (
+        <button className='pane-selector modal-button' onClick={this.nextInstructions}> Next </button>
+    );
+
+    if (this.state.siteDescriptionNumber === 3) {
+      nextButton = (<div></div>);
+    }
 
     return(
       <div className='site-desc-full'>
-
         {description}
-
         <div className='modal-panel-container'>
           <button className='pane-selector modal-button' onClick={this.previousInstructions}> Previous </button>
-          <button className='pane-selector modal-button' onClick={this.props.closeModal}> Close & Start Testing! </button>
           <button className='pane-selector modal-button' onClick={this.runDemo}> Run Demo </button>
-          <button className='pane-selector modal-button' onClick={this.nextInstructions}> Next </button>
-        </div>
+          <button className='pane-selector modal-button' onClick={this.props.closeModal}> Close & Start Testing! </button>
+          {nextButton}
 
+        </div>
       </div>
     );
   }
