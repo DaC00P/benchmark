@@ -39,12 +39,7 @@ const WelcomeMessage = React.createClass({
     }
   },
 
-  runDemo() {
-    console.log('run the demo!');
-  },
-
-  render(){
-    let description = this.chooseStepComponent();
+  nextButtonChoice() {
     let nextButton = (
         <button className='pane-selector modal-button' onClick={this.nextInstructions}> Next </button>
     );
@@ -52,12 +47,35 @@ const WelcomeMessage = React.createClass({
     if (this.state.siteDescriptionNumber === 3) {
       nextButton = (<div></div>);
     }
+    return nextButton;
+  },
+
+  prevButtonChoice() {
+    let prevButton = (
+      <button className='pane-selector modal-button' onClick={this.previousInstructions}> Previous </button>
+    );
+
+    if (this.state.siteDescriptionNumber === 1) {
+      prevButton = (<div></div>);
+    }
+    return prevButton;
+  },
+
+  runDemo() {
+    console.log('run the demo!');
+  },
+
+  render(){
+    let description = this.chooseStepComponent();
+    let nextButton = this.nextButtonChoice();
+    let prevButton = this.prevButtonChoice();
 
     return(
       <div className='site-desc-full'>
         {description}
         <div className='modal-panel-container'>
-          <button className='pane-selector modal-button' onClick={this.previousInstructions}> Previous </button>
+          
+          {prevButton}
           <button className='pane-selector modal-button' onClick={this.runDemo}> Run Demo </button>
           <button className='pane-selector modal-button' onClick={this.props.closeModal}> Close & Start Testing! </button>
           {nextButton}
