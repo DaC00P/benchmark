@@ -40,7 +40,8 @@ const customStyle = {
     outline                    : 'none',
     padding                    : '20px',
     transform                  : 'translateX(-50%) translateY(-5%)',
-    minWidth                   : '80%'
+    minWidth                   : '80%',
+    maxHeight                  : '80%'
 
   }
 };
