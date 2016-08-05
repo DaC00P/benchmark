@@ -28,17 +28,18 @@ const customStyle = {
   },
   content : {
     position                   : 'absolute',
-    top                        : '40px',
-    left                       : '40px',
-    right                      : '40px',
-    bottom                     : '40px',
+    top                        : '10%',
+    left                       : '10%',
+    right                      : 'auto',
+    bottom                     : 'auto',
     border                     : '2px solid #6a51a3',
     background                 : '#fff',
     overflow                   : 'auto',
     WebkitOverflowScrolling    : 'touch',
     borderRadius               : '10px',
     outline                    : 'none',
-    padding                    : '20px'
+    padding                    : '20px',
+    transform                  : 'translateX(-5%) translatey(-5%)'
 
   }
 };
