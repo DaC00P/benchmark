@@ -18,37 +18,35 @@ const ControlPanel = React.createClass({
   componentWillUnmount(){
     this.listener.remove();
   },
-
+  //re-enables 'run-tests' button when store recieves data from backend
   _onChange(){
     this.setState({running: false});
   },
-
+  //checks selected pane to diable selector button
   selectCheck(n){
     return this.state.selected === n;
   },
-
+  //selects pane to insert code when buttons pressed
   selectPane(evt){
     this.setState({selected: evt.target.id});
   },
-
+  //sets range of array lengths for test
   setRange(evt){
     evt.preventDefault();
     const val = evt.target.value;
     if(evt.target.id === 'range-min'){this.setState({min: val});}
     if(evt.target.id === 'range-max'){this.setState({max: val});}
   },
-
+  //sets number of tests to run
   setTests(evt){
     evt.preventDefault();
     const val = evt.target.value;
     this.setState({tests: val})
   },
-
+  //inputs sort function from library into the selected editor
   demoSort(evt){
     let pane = document.getElementById(`editor-${this.state.selected}`);
     let text = Library[evt.target.id]();
-    // pane.value = text;
-    // pane.setAttribute('value', text);
     ace.edit(pane).getSession().setValue(text);
   },
 
@@ -70,7 +68,7 @@ const ControlPanel = React.createClass({
     }
     return arr;
   },
-
+  //clears all entred text from the currently selected editor
   clearPane(evt){
     evt.preventDefault();
     let pane = document.getElementById(`editor-${this.state.selected}`);
@@ -80,7 +78,7 @@ const ControlPanel = React.createClass({
 
   handleSubmit(evt){
     evt.preventDefault();
-    //disables 'run tests button'
+    //disables 'run tests' button until results returned
     this.setState({running: true});
     //gets Ace Editor elements and values
     const el1 = document.getElementById('editor-1');
@@ -93,9 +91,9 @@ const ControlPanel = React.createClass({
     const name2 = value2.match(/function(.*)\(/)[1].trim();
     let method1 = `var ${name1} = ${value1}`;
     let method2 = `var ${name2} = ${value2}`;
+    //assembles JSON to be sent to back end
     const data = {method1: method1, method2: method2, name1: name1, name2: name2, lengthArr: lengthArr};
     ClientActions.sendMethods(data);
-    console.log(data);
   },
 
   render(){
