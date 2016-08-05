@@ -4,8 +4,7 @@ const ReactDOM = require('react-dom');
 const SiteDescriptionThree = React.createClass({
   render(){
     return(
-      <div>
-       <div>
+       <div className='stepthree-container'>
          <h2 className='welcome-text'>Examples!</h2>
          <div className='step-three'>
            <p>
@@ -30,10 +29,9 @@ const SiteDescriptionThree = React.createClass({
            <h2>
              HAPPY SORTING!!
            </h2>
-           <img style={{'margin': '0 auto'}} src='http://vignette4.wikia.nocookie.net/harrypotter/images/d/d7/Sorting_hat.jpg/revision/latest?cb=20080804054046'></img>
+           <img className='stepthree-img' style={{'margin': '0 auto'}} src='http://vignette4.wikia.nocookie.net/harrypotter/images/d/d7/Sorting_hat.jpg/revision/latest?cb=20080804054046'></img>
          </div>
        </div>
-     </div>
     );
   }
 
