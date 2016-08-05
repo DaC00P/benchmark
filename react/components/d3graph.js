@@ -33,7 +33,7 @@ d3Chart.create = function(el, props, state){
 // .attr('transform', `translate(${svgWidth * 0.02}, ${svgHeight * 0.50})`);
 d3Chart.mouseover = function(){
   let evt = d3.event;
-  console.log(d3.event.target);
+  // console.log(d3.event.target);
   let target = event.target;
   d3.select(target).attr('r', 8);
   let coords = d3.mouse(this);
