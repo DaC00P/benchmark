@@ -7,7 +7,7 @@ const SiteDescriptionTwo = React.createClass({
       <div className='modal-container two'>
         <h2 className='welcome-text'>Instructions!</h2>
         <div className='step-two'>
-          <ul className='description-text'>
+          <ul className='description-text-ul'>
             <li>
               To test your algorithm, please input it into the text pane of your choice! You can pit it against your own algorithm, or against one of our built in sorts!
             </li>

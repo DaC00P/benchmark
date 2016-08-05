@@ -29,7 +29,7 @@ const customStyle = {
   content : {
     position                   : 'absolute',
     top                        : '10%',
-    left                       : '10%',
+    left                       : '50%',
     right                      : 'auto',
     bottom                     : 'auto',
     border                     : '2px solid #6a51a3',
@@ -39,7 +39,8 @@ const customStyle = {
     borderRadius               : '10px',
     outline                    : 'none',
     padding                    : '20px',
-    transform                  : 'translateX(-5%) translatey(-5%)'
+    transform                  : 'translateX(-50%) translateY(-5%)',
+    minWidth                   : '80%'
 
   }
 };
