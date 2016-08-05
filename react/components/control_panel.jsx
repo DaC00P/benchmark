@@ -43,12 +43,10 @@ const ControlPanel = React.createClass({
     const val = evt.target.value;
     this.setState({tests: val})
   },
-
+  //inputs sort function from library into the selected editor
   demoSort(evt){
     let pane = document.getElementById(`editor-${this.state.selected}`);
     let text = Library[evt.target.id]();
-    // pane.value = text;
-    // pane.setAttribute('value', text);
     ace.edit(pane).getSession().setValue(text);
   },
 
@@ -80,7 +78,7 @@ const ControlPanel = React.createClass({
 
   handleSubmit(evt){
     evt.preventDefault();
-    //disables 'run tests button'
+    //disables 'run tests' button until results returned
     this.setState({running: true});
     //gets Ace Editor elements and values
     const el1 = document.getElementById('editor-1');
