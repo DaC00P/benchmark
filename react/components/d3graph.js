@@ -58,7 +58,7 @@ d3Chart.getText = function(target){
 }
 
 d3Chart.getAxesInfo = function(data){
-  let xDomain = [0, data.xAxis[data.xAxis.length - 1]];
+  let xDomain = [data.xAxis[0], data.xAxis[data.xAxis.length - 1]];
   let yDomain = [data.rawData1[0].y, data.rawData1[0].y];
   data.rawData1.concat(data.rawData2).forEach( (point) => {
     if(point.y > yDomain[1]){yDomain[1] = point.y}
