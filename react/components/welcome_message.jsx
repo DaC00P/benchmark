@@ -89,14 +89,14 @@ const WelcomeMessage = React.createClass({
     return(
       <div className='site-desc-full'>
         {description}
-        <div className='modal-panel-container'>
 
+        <div className='modal-panel-container'>
           {prevButton}
           <button className='pane-selector modal-button' onClick={this.runDemo}> Run Demo </button>
           <button className='pane-selector modal-button' onClick={this.props.closeModal}> Close & Start Testing! </button>
           {nextButton}
-
         </div>
+
       </div>
     );
   }
