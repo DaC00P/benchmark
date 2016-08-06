@@ -25,7 +25,6 @@ const SiteDescriptionTwo = React.createClass({
             </li>
           </ul>
         </div>
-        <img className='steptwo-img' style={{'margin': '0 auto'}} src='http://i.stack.imgur.com/lXZkh.png'></img>
       </div>
     );
   }
@@ -33,3 +32,4 @@ const SiteDescriptionTwo = React.createClass({
 });
 
 module.exports = SiteDescriptionTwo;
+// <img className='steptwo-img' style={{'margin': '0 auto'}} src='https://i.stack.imgur.com/lXZkh.png'></img>
