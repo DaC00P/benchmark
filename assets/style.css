@@ -235,7 +235,7 @@ li {
 
 .chart {
   /*border: 1px solid;*/
-  flex: 2;
+  flex: 1.6;
   background: black;
   /* display: flex; */
   /* align-items: flex-start; */
