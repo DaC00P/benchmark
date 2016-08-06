@@ -28,18 +28,17 @@ const customStyle = {
   },
   content : {
     position                   : 'absolute',
-    top                        : '10%',
-    left                       : '10%',
-    right                      : 'auto',
-    bottom                     : 'auto',
+    top                        : '40px',
+    left                       : '40px',
+    right                      : '40px',
+    bottom                     : '40px',
     border                     : '2px solid #6a51a3',
     background                 : '#fff',
     overflow                   : 'auto',
     WebkitOverflowScrolling    : 'touch',
     borderRadius               : '10px',
     outline                    : 'none',
-    padding                    : '20px',
-    transform                  : 'translateX(-5%) translatey(-5%)'
+    padding                    : '20px'
 
   }
 };
@@ -82,7 +81,7 @@ const App = React.createClass({
           <AceEditor n={2} />
         </div>
         <div className='lower-container'>
-          <ControlPanel openInstructionModal={this.openModal}/>
+          <ControlPanel />
         </div>
         <footer> Informative Footer Goes Here, with our github and linkedin</footer>
       </div>
