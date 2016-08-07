@@ -73,7 +73,7 @@ d3Chart.update = function(el, data){
   d3.selectAll('text.function-label').remove();
   this.data = data;
   const domains = d3Chart.getAxesInfo(data);
-  console.log(domains);
+  // console.log(domains);
   const xScale = d3.scaleLinear().range([0, chartWidth]).domain(domains.xDomain);
   const yScale = d3.scaleLinear().range([chartHeight, 0]).domain(domains.yDomain);
 
