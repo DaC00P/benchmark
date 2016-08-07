@@ -30,12 +30,12 @@ Server.post('/api/algos', function(req, res){
 });
 
 // FOR LIVE SERVER
-// Server.listen(process.env.PORT, function(){
-//   console.log('Server Running');
-// });
+Server.listen(process.env.PORT, function(){
+  console.log('Server Running');
+});
 
 
 // FOR DEV SERVER
-Server.listen(8000, function(){
-  console.log('Server Running');
-});
+// Server.listen(8000, function(){
+//   console.log('Server Running');
+// });
