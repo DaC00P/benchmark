@@ -54,7 +54,7 @@ const CodeForm = React.createClass({
   handleTab(event){
     if(event.keyCode === 9){
       event.preventDefault();
-      console.log(event.target.id);
+      // console.log(event.target.id);
       let v = event.target.value;
       let s = event.target.selectionStart;
       let e = event.target.selectionEnd;
