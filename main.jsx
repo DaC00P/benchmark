@@ -12,6 +12,7 @@ const ControlPanel = require('./react/components/control_panel');
 const Modal = require('react-modal');
 const WelcomeMessage = require('./react/components/welcome_message');
 const AceEditor = require('./react/components/ace_editor');
+const Footer = require('./react/components/footer');
 
 // import { Graph } from './graph';
 // import { TextArea } from './text_area';
@@ -86,7 +87,7 @@ const App = React.createClass({
         <div className='lower-container'>
           <ControlPanel openInstructionModal={this.openModal}/>
         </div>
-        <footer> Informative Footer Goes Here, with our github and linkedin</footer>
+        <Footer/>
       </div>
     );
   }
