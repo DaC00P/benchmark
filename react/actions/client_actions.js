@@ -4,7 +4,7 @@ import * as ServerActions from './server_actions';
 module.exports = {
 
   sendMethods(data){
-    ApiCalls.sendMethods(data, ServerActions.storeData)
+    ApiCalls.sendMethods(data, ServerActions.storeData, ServerActions.storeError);
   }
 
-}
+};

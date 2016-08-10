@@ -13,5 +13,12 @@ module.exports = {
       // rawData2: resp.rawData2,
       // xaxis:resp.xAxis,
     });
+  },
+
+  storeError(resp){
+    AppDispatcher.dispatch({
+      actionType: "ERROR",
+      data: resp
+    });
   }
 };
