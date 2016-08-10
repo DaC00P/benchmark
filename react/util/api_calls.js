@@ -1,6 +1,6 @@
 module.exports = {
 
-  sendMethods(data, action){
+  sendMethods(data, action, errorAction){
     $.ajax({
       url: "api/algos",
       type: "POST",
@@ -8,6 +8,9 @@ module.exports = {
       dataType: 'json',
       success(resp){
         action(resp);
+      },
+      error(resp){
+        errorAction(resp);
       }
     });
   }
