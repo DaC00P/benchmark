@@ -4,11 +4,6 @@ const SortUtil = require('./sorts');
 const SortUtil2 = require('./sorts0');
 const VM = require('./vm');
 
-//list of available VMs, we use vm2
-// const vm  = require('vm');
-// const {VM} = require('vm2');
-// const jailed = require('jailed');
-
 module.exports = {
   receiveCode(codeObj) {
     let method1 = codeObj.algos.method1;
