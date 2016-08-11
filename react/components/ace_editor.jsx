@@ -20,8 +20,6 @@ const AceEditor = React.createClass({
 
   handleChange(e){
     let val = this.editor.getSession().getValue();
-    // console.log(val);
-    // console.log(e);
   },
 
   render(){
