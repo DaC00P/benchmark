@@ -329,7 +329,6 @@ li {
  .connect-row {
   align-items: center;
   display: flex;
-  width: 300px;
   padding: 0px;
   height: 20px;
   list-style: none;
