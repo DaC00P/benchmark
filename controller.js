@@ -17,26 +17,32 @@ module.exports = {
   testCode(method1, methodOneName, method2, methodTwoName, lengthArr) {
     let results1 = [];
     let results2 = [];
+    let res1;
+    let res2;
 
     for (let i = 0; i < lengthArr.length; i++) {
-      let n = lengthArr[i];
-      let res1 = VM.bootVM(method1, methodOneName, n);
-      console.log(res1);
-      let res2 = VM.bootVM(method2, methodTwoName, n);
-      console.log(res2);
-      results1.push({x: n, y: res1});
-      results2.push({x: n, y: res2});
-      if(res1 > 20000 || res2 > 20000){ break; }
+      try {
+          let n = lengthArr[i];
+          let res1 = VM.bootVM(method1, methodOneName, n);
+          results1.push({x: n, y: res1});
+          if(res1 > 20000){ break; }
+      } catch(e) {
+          break;
+      }
     }
 
+    for (let i = 0; i < lengthArr.length; i++) {
+      try {
+          let n = lengthArr[i];
+          let res2 = VM.bootVM(method2, methodTwoName, n);
+          results2.push({x: n, y: res2});
+          if(res2 > 20000){ break; }
+      } catch(e) {
+          break;
+      }
+    }
 
-    let max = results1.concat(results2).map( res => res.y).sort( (a, b) => a - b ).pop();
-
-    let data1 = this.transform(results1, max);
-    let data2 = this.transform(results2, max);
     return {
-      data1: data1,
-      data2: data2,
       xAxis: lengthArr,
       rawData1: results1,
       rawData2: results2,
@@ -44,13 +50,4 @@ module.exports = {
       name2: methodTwoName
     };
   },
-
-  transform(data, max){
-    let transformed = [];
-    data.forEach( (point, idx) => {
-      let obj = { x: (600 / (data.length + 1)) * (idx + 1), y: point.y * 590/max };
-      transformed.push(obj);
-    });
-    return transformed;
-  }
 };
