@@ -83,20 +83,10 @@ const WelcomeMessage = React.createClass({
 
   render(){
     let description = this.chooseStepComponent();
-    let nextButton = this.nextButtonChoice();
-    let prevButton = this.prevButtonChoice();
 
     return(
       <div className='site-desc-full'>
         {description}
-
-        <div className='modal-panel-container'>
-          {prevButton}
-          <button className='pane-selector modal-button' onClick={this.runDemo}> Run Demo </button>
-          <button className='pane-selector modal-button' onClick={this.props.closeModal}> Close & Start Testing! </button>
-          {nextButton}
-        </div>
-
       </div>
     );
   }
@@ -105,3 +95,18 @@ const WelcomeMessage = React.createClass({
 
 
 module.exports = WelcomeMessage;
+
+const ModalButtons = React.createClass({
+  render(){
+    let nextButton = this.nextButtonChoice();
+    let prevButton = this.prevButtonChoice();
+    return(
+      <div className='modal-panel-container'>
+        {prevButton}
+        <button className='pane-selector modal-button' onClick={this.runDemo}> Run Demo </button>
+        <button className='pane-selector modal-button' onClick={this.props.closeModal}> Close & Start Testing! </button>
+        {nextButton}
+      </div>
+    );
+  }
+});
