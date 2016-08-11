@@ -23,6 +23,7 @@ module.exports = {
       let res2 = VM.bootVM(method2, methodTwoName, n);
       results1.push({x: n, y: res1});
       results2.push({x: n, y: res2});
+      if(res1 > 20000, || res2 > 20000){ break; }
     });
 
     let max = results1.concat(results2).map( res => res.y).sort( (a, b) => a - b ).pop();
