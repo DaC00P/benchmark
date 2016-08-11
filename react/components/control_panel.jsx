@@ -59,10 +59,11 @@ const ControlPanel = React.createClass({
   // makes int array of test lengths from specified user inputs
   makeArr(){
     let arr = [];
-    const min = parseInt(document.getElementById('range-min').value);
-    const max = parseInt(document.getElementById('range-max').value);
-    const n = parseInt(document.getElementById('num-tests').value);
+    let min = parseInt(document.getElementById('range-min').value);
+    let max = parseInt(document.getElementById('range-max').value);
+    let n = parseInt(document.getElementById('num-tests').value);
     if(max > 100000){max = 100000;}
+    if(min > 100000){min = 100000;}
     if(n > 100){n = 100;}
     const step = (max - min) / (n - 1);
     for (let i = 0; i < n; i++) {
@@ -114,17 +115,19 @@ const ControlPanel = React.createClass({
             <input
               className='range-input' id='range-min'
               type='number' placeholder='min size'
+              max='100000' min='1'
               data-tip data-for='min-length'
               onChange={this.setRange} value={this.state.min} />
             <input
               className='range-input' id='range-max'
-              type='number' placeholder='max size' max=100000
+              type='number' placeholder='max size'
+              max='100000' min='1'
               data-tip data-for='max-length'
               onChange={this.setRange} value={this.state.max} />
             <input
               className='num-tests-input' id='num-tests'
               type='number' placeholder='num tests'
-              data-tip data-for='num-tests' max=100
+              data-tip data-for='num-tests' max='100'
               onChange={this.setTests} value={this.state.tests} />
           </div>
           <button
