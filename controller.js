@@ -18,13 +18,17 @@ module.exports = {
     let results1 = [];
     let results2 = [];
 
-    lengthArr.forEach( (n) => {
+    for (let i = 0; i < lengthArr.length; i++) {
+      let n = lengthArr[i];
       let res1 = VM.bootVM(method1, methodOneName, n);
+      console.log(res1);
       let res2 = VM.bootVM(method2, methodTwoName, n);
+      console.log(res2);
       results1.push({x: n, y: res1});
       results2.push({x: n, y: res2});
       if(res1 > 20000 || res2 > 20000){ break; }
-    });
+    }
+
 
     let max = results1.concat(results2).map( res => res.y).sort( (a, b) => a - b ).pop();
 
