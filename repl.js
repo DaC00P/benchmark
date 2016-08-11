@@ -20,6 +20,7 @@ function benchmark(sortFunc, length, iterations){
     sortFunc(a);
     let t1 = new Date();
     t += (t1 - t0);
+    if(t > 20000){ break }
   }
   console.log(`${t} ms @ n = ${length}`);
   return t;
