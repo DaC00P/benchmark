@@ -9,8 +9,8 @@ const Footer = React.createClass({
           <p className="by-dc-to">{text}</p>
           <ul className="connect-row">
             <li className="git">
-              <a className="icon-github-circled" href="https://github.com/travisoneill/benchmark" target='_blank'>
-                <strong className="heading">GITHUB</strong>  
+              <a className="icon-github-circled" href="https://github.com/travisoneill/benchmark">
+                <strong className="heading">GITHUB</strong>
               </a>
             </li>
           </ul>
