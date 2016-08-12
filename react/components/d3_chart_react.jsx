@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import { DataStore } from './stores/data_store';
 import * as ServerActions from '../actions/server_actions';
 
 const DataStore = require('../stores/data_store');

@@ -1,7 +1,5 @@
 import * as React from 'react';
-// import { DataStore } from './stores/data_store';
 import * as ServerActions from '../actions/server_actions';
-
 const DataStore = require('../stores/data_store');
 
 const d3Chart = {};
@@ -30,10 +28,9 @@ d3Chart.create = function(el, props, state){
   this.chart = this.svg.append('g').attr('class', 'chart-display')
         .attr('transform', `translate(${chartMargin.left},${chartMargin.top})`);
 };
-// .attr('transform', `translate(${svgWidth * 0.02}, ${svgHeight * 0.50})`);
+
 d3Chart.mouseover = function(){
   let evt = d3.event;
-  // console.log(d3.event.target);
   let target = event.target;
   d3.select(target).attr('r', 8);
   let coords = d3.mouse(this);
@@ -43,15 +40,12 @@ d3Chart.mouseover = function(){
 }
 
 d3Chart.mouseout = function(){
-  // console.log('mouseover');
-  // console.log(d3.event.target);
   d3.selectAll('text.hover-text').remove();
   let target = d3.event.target;
   d3.select(target).attr('r', 5);
 }
 
 d3Chart.getText = function(target){
-  // console.log(target);
   let point = target.id.split('-');
   let data = this.data[`rawData${point[0]}`][point[1]];
   return {line1: `Length: ${data.x}`, line2: `Time: ${data.y}ms`};
