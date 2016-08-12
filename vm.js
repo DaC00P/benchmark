@@ -1,5 +1,5 @@
 const {VM} = require('vm2');
-const SearchConstants = require('./search_consts');
+const BenchmarkConstants = require('./benchmark_consts');
 
 module.exports = {
     bootVM(method, methodName, lengthArr) {
@@ -7,7 +7,7 @@ module.exports = {
          timeout: 29000,
          sandbox: {Promise: null}
      });
-     return worker1.run(SearchConstants.runUserCode(method, methodName, lengthArr));
+     return worker1.run(BenchmarkConstants.runUserCode(method, methodName, lengthArr));
    }
 
 };
