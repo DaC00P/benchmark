@@ -34,5 +34,10 @@ module.exports = {
 
   getBenchMarker(methodName, lengthArr) {
     return benchMarker + `bm(${methodName}, ${lengthArr}, 1)`;
+  },
+
+  runUserCode(method, methodName, lengthArr) {
+    return method + this.getArrayMaker() + this.getBenchMarker(methodName, lengthArr);
   }
+
 };
