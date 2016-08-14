@@ -5,23 +5,23 @@ const SiteDescriptionThree = React.createClass({
   render(){
     return(
        <div className='modal-container'>
-         <h2 className='welcome-text'>Examples!</h2>
+         <h2 className='welcome-text'>Examples</h2>
          <div className='step-three'>
            <p>
-             Here are some video tutorials for the inexperienced among us!
+             Here are some video tutorials for the inexperienced among us:
            </p>
            <p>
-             Bubble Sort!
+             Bubble Sort
              <br></br>
              <a href="https://www.youtube.com/watch?v=Jdtq5uKz-w4" target='_blank'>Video Tutorial</a>
            </p>
            <p>
-             Quick Sort!
+             Quick Sort
              <br></br>
              <a href="https://www.youtube.com/watch?v=TzeBrDU-JaY" target='_blank'>Video Tutorial</a>
            </p>
            <p>
-             Merge Sort!
+             Merge Sort
              <br></br>
              <a href="https://www.youtube.com/watch?v=TzeBrDU-JaY&index=5&list=PL2_aWCzGMAwKedT2KfDMB9YA5DgASZb3U" target='_blank'>Video Tutorial</a>
            </p>

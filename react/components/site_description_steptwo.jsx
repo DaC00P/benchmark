@@ -5,7 +5,7 @@ const SiteDescriptionTwo = React.createClass({
   render(){
     return(
       <div className='modal-container two'>
-        <h2 className='welcome-text'>Instructions!</h2>
+        <h2 className='welcome-text'>Instructions</h2>
         <div className='step-two'>
           <ul className='description-text-ul'>
             <li>
