@@ -1,6 +1,6 @@
 import * as React from 'react';
+import * as d3 from 'd3';
 import * as ServerActions from '../actions/server_actions';
-const DataStore = require('../stores/data_store');
 
 const d3Chart = {};
 
