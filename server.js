@@ -3,7 +3,7 @@
 const Express = require('express');
 const Server = Express();
 const Path = require('path');
-const Controller = require('./controller');
+const Controller = require('./node/controller');
 const BodyParser = require('body-parser');
 
 

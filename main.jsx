@@ -5,7 +5,7 @@ const ReactDOM = require('react-dom');
 const D3 = require('./react/components/d3_chart_react');
 const ControlPanel = require('./react/components/control_panel');
 const Modal = require('react-modal');
-const ModalParams = require('./modal_params');
+const ModalParams = require('./react/util/modal_params');
 const WelcomeMessage = require('./react/components/welcome_message');
 const AceEditor = require('./react/components/ace_editor');
 const Footer = require('./react/components/footer');
@@ -42,7 +42,7 @@ const App = React.createClass({
             key="reservationModal"
             isOpen={this.state.modalIsOpen}
             onRequestClose={this.closeModal}
-            style={ModalParams.modalStyle} 
+            style={ModalParams.modalStyle}
             id="welcome-modal">
             <WelcomeMessage closeModal={this.closeModal}/>
           </Modal>

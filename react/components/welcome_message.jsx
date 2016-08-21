@@ -3,7 +3,7 @@ const ReactDOM = require('react-dom');
 const SiteDescriptionOne = require('./site_description_stepone');
 const SiteDescriptionTwo = require('./site_description_steptwo');
 const SiteDescriptionThree = require('./site_description_stepthree');
-import * as Library from '../../sorts';
+import * as Library from '../util/sorts';
 import * as ClientActions from '../actions/client_actions';
 
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ClientActions from '../actions/client_actions';
-import * as Library from '../../sorts';
-import * as Hover from '../../hover_text';
+import * as Library from '../util/sorts';
+import * as Hover from '../util/hover_text';
 const ReactTooltip = require("react-tooltip");
 const DataStore = require('../stores/data_store');
 
