@@ -43,10 +43,15 @@ const ControlPanel = React.createClass({
     const val = evt.target.value;
     this.setState({tests: val})
   },
+  //sets active language in selected pane
+  setLang(evt){
+    const pane = document.getElementById(`editor-${this.state.selected}`);
+    ace.edit(pane).getSession().setMode({path: `ace/mode/${evt.target.id}`, v: Date.now()});
+  },
   //inputs sort function from library into the selected editor
   demoSort(evt){
-    let pane = document.getElementById(`editor-${this.state.selected}`);
-    let text = Library[evt.target.id]();
+    const pane = document.getElementById(`editor-${this.state.selected}`);
+    const text = Library[evt.target.id]();
     ace.edit(pane).getSession().setValue(text);
   },
 
@@ -134,12 +139,18 @@ const ControlPanel = React.createClass({
             className='pane-selector' id='2'
             disabled={this.state.running}
             onClick={this.handleSubmit}>RUN TESTS</button>
-            <button
-              className='pane-selector' id='clear'
-              onClick={this.clearPane}>CLEAR PANE</button>
-            <button
-              className='pane-selector' id='instructions'
-              onClick={this.showInstructions}>INSTRUCTIONS</button>
+          <button
+            className='pane-selector' id='clear'
+            onClick={this.clearPane}>CLEAR PANE</button>
+          <button
+            className='pane-selector' id='instructions'
+            onClick={this.showInstructions}>INSTRUCTIONS</button>
+          <button
+            className='pane-selector' id='javascript'
+            onClick={this.setLang}>JavaScript</button>
+          <button
+            className='pane-selector' id='python'
+            onClick={this.setLang}>Python</button>
         </div>
         <div className='library-sorts'>
           <button
