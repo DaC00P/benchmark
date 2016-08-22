@@ -26,7 +26,7 @@ const D3Graph = React.createClass({
 
   componentWillUnmount(){
     //will need to integrate this with removing D3 chart if we need it
-    //to unmount.  Unnecessary for now.
+    //to unmount.  Unecessary for now.
     this.listener.remove();
   },
 

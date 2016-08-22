@@ -3,9 +3,8 @@
 const Express = require('express');
 const Server = Express();
 const Path = require('path');
-const Controller = require('./node/controller');
+const Controller = require('./controller');
 const BodyParser = require('body-parser');
-
 
 Server.use(Express.static(Path.join(__dirname + '/assets')));
 
@@ -32,12 +31,12 @@ Server.post('/api/algos', function(req, res){
 });
 
 // FOR LIVE SERVER
-Server.listen(process.env.PORT, function(){
-  console.log('Server Running');
-});
+// Server.listen(process.env.PORT, function(){
+//   console.log('Server Running');
+// });
 
 
 // FOR DEV SERVER
-// Server.listen(8000, function(){
-//   console.log('Server Running');
-// });
+Server.listen(8001, function(){
+  console.log('Server Running');
+});
