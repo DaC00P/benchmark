@@ -7,6 +7,11 @@ ports = {
     'static': "8003"
 }
 
+services = {
+    'javascript': 'node',
+    'python': 'flask'
+}
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -24,13 +29,39 @@ def root(params):
         url = 'http://localhost:' + ports['static']+ '/' + params
         return redirect(url, code=302, Response=None)
 
-@app.route('/api/algos/<data>')
+@app.route('/api/algos', methods=['POST'])
 def send():
-    pass
+    data = request.json
+    servers = {}
+    responses = []
+    for service, server in services.items():
+        servers[server] = False
 
-def requestParser(data):
-    flask_request = {}
-    python_request = {}
+    print('servers', servers)
+
+    for key, params in data.items():
+        if key[0:4] == 'data':
+            language = params['language']
+            server = services[language]
+            servers[server] = True
+
+    print('servers', servers)
+
+    for server, send_status in servers.items():
+        if send_status == True:
+            url = 'http://localhost:' + ports[server] + request.path
+            res = requests.post(url, data)
+            responses.append(res)
+            print(responses)
+
+    print(request.json['data1'])
+    return "REDIRECTED"
+
+
+# def requestParser(params):
+#     request = {'flask': {}, 'node': {}}
+#     python_request = {}
+#     if params['data1']['language1'] == flask
 
 
 #gunicorn
