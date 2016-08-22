@@ -24,12 +24,13 @@ def root(params):
         url = 'http://localhost:' + ports['static']+ '/' + params
         return redirect(url, code=302, Response=None)
 
-# @app.route('/<path>')
-# def get_static(path):
-#     debugger
-#     res = requests.get('http://localhost:' + ports['node']+ '/' + path )
-#     print(res)
-#     return res._content
+@app.route('/api/algos/<data>')
+def send():
+    pass
+
+def requestParser(data):
+    flask_request = {}
+    python_request = {}
 
 
 #gunicorn

@@ -6,6 +6,7 @@ const Path = require('path');
 const Controller = require('./controller');
 const BodyParser = require('body-parser');
 
+
 Server.use(Express.static(Path.join(__dirname + '/assets')));
 
 Server.use(BodyParser.urlencoded({
@@ -13,12 +14,6 @@ Server.use(BodyParser.urlencoded({
   parameterLimit: 10000,
   limit: 1024 * 1024 * 10
 }));
-
-// Server.use(BodyParser.json({
-//   extended: false,
-//   parameterLimit: 10000,
-//   limit: 1024 * 1024 * 10
-// }));
 
 Server.get('/', function(req, res){
   res.sendFile(Path.join(__dirname + '/index.html'));

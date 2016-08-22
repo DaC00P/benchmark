@@ -44,7 +44,7 @@ const ControlPanel = React.createClass({
     this.setState({tests: val})
   },
   //sets active language in selected pane
-  setLang(evt){
+  setLanguage(evt){
     const pane = document.getElementById(`editor-${this.state.selected}`);
     ace.edit(pane).getSession().setMode({path: `ace/mode/${evt.target.id}`, v: Date.now()});
   },
@@ -76,6 +76,16 @@ const ControlPanel = React.createClass({
     }
     return arr;
   },
+
+  parseEditor(el){
+    const language = ace.edit(el).getSession().getMode().$id.match(/\w*$/)[0];
+    const text = ace.edit(el).getSession().getValue();
+    const name = text.match(/\s(.*?)\(/)[1];
+    let method;
+    if(language === 'javascript'){method = `var ${name} = ${text}`;}
+    if(language === 'python'){method = text;}
+    return {method: method, name: name, language: language}
+  },
   //clears all entred text from the currently selected editor
   clearPane(evt){
     evt.preventDefault();
@@ -91,16 +101,22 @@ const ControlPanel = React.createClass({
     //gets Ace Editor elements and values
     const el1 = document.getElementById('editor-1');
     const el2 = document.getElementById('editor-2');
-    const value1 = ace.edit(el1).getSession().getValue();
-    const value2 = ace.edit(el2).getSession().getValue();
+    const method1 = this.parseEditor(el1);
+    const method2 = this.parseEditor(el2);
+    // const language1 = ace.edit(el1).getSession().getMode().$id.match(/\w*$/)[0];
+    // const language2 = ace.edit(el2).getSession().getMode().$id.match(/\w*$/)[0];
+    // const value1 = ace.edit(el1).getSession().getValue();
+    // const value2 = ace.edit(el2).getSession().getValue();
     const lengthArr = this.makeArr();
     //parses out declared function name
-    const name1 = value1.match(/function(.*)\(/)[1].trim();
-    const name2 = value2.match(/function(.*)\(/)[1].trim();
-    let method1 = `var ${name1} = ${value1}`;
-    let method2 = `var ${name2} = ${value2}`;
+    // const name1 = value1.match(/function(.*)\(/)[1].trim();
+    // const name2 = value2.match(/function(.*)\(/)[1].trim();
+    // const method1 = `var ${name1} = ${value1}`;
+    // const method2 = `var ${name2} = ${value2}`;
+
     //assembles JSON to be sent to back end
-    const data = {method1: method1, method2: method2, name1: name1, name2: name2, lengthArr: lengthArr};
+    const data = { data1: method1, data2: method2, lengthArr: lengthArr };
+    console.log(data);
     ClientActions.sendMethods(data);
   },
 
@@ -147,10 +163,10 @@ const ControlPanel = React.createClass({
             onClick={this.showInstructions}>INSTRUCTIONS</button>
           <button
             className='pane-selector' id='javascript'
-            onClick={this.setLang}>JavaScript</button>
+            onClick={this.setLanguage}>JavaScript</button>
           <button
             className='pane-selector' id='python'
-            onClick={this.setLang}>Python</button>
+            onClick={this.setLanguage}>Python</button>
         </div>
         <div className='library-sorts'>
           <button
