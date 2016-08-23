@@ -79,6 +79,7 @@ d3Chart.update = function(el, data){
   const n1 = data.data1.name;
   const n2 = data.data2.name;
   data = {xAxis: axis, name1: n1, name2: n2, rawData1: d1, rawData2: d2};
+  this.data = data;
   //removes data points and scales from existing chart
   d3.selectAll('circle').remove();
   d3.selectAll('g.axis').remove();
