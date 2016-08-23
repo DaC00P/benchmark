@@ -25,7 +25,6 @@ DataStore.getError = function() {
 };
 
 DataStore.store = function(payload){
-  debugger;
   _data1 = payload.data.data1;
   _data2 = payload.data.data2;
   _data = payload.data;
@@ -49,7 +48,6 @@ DataStore.storeError = function(errorMessage){
 };
 
 DataStore.__onDispatch = function(payload){
-  debugger;
   switch(payload.actionType){
     case "STORE_RESPONSE":
       DataStore.store(payload);

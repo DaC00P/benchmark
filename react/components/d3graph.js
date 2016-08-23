@@ -72,7 +72,13 @@ d3Chart.getAxesInfo = function(data){
 }
 
 d3Chart.update = function(el, data){
-  this.data = data;
+  //Janky way to make new format match old.  Refactor.
+  const axis = data.data1.xAxis;
+  const d1 = data.data1.rawData;
+  const d2 = data.data2.rawData;
+  const n1 = data.data1.name;
+  const n2 = data.data2.name;
+  data = {xAxis: axis, name1: n1, name2: n2, rawData1: d1, rawData2: d2};
   //removes data points and scales from existing chart
   d3.selectAll('circle').remove();
   d3.selectAll('g.axis').remove();
