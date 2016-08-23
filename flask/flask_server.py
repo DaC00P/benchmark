@@ -7,8 +7,8 @@ app = Flask(__name__)
 def root():
     return('FLASK SERVER')
 
-@app.route('/api/algos/<params>')
-def run(params):
+@app.route('/api/algos', method=['POST'])
+def run():
     print(request)
     print(params)
     return('ALGO API')
