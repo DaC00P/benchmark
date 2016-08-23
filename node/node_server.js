@@ -20,11 +20,6 @@ Server.use(BodyParser.urlencoded({
 // });
 
 Server.post('/api/algos', function(req, res){
-  console.log(req);
-  console.log(req.body);
-  console.log(req.json);
-  console.log(req.data);
-  console.log(req.headers);
   let data = Controller.receiveCode(req.body);
   console.log(data);
   res.send(data);

@@ -11,12 +11,10 @@ module.exports = {
   //   return this.testCode(method1, methodOneName, method2, methodTwoName, lengthArr);
   // },
   receiveCode(codeObj) {
-    console.log(codeObj)
     const lengthArr = codeObj.lengthArr;
     const requestData = JSON.parse(codeObj.request_data);
     const method = requestData.method;
     const name = requestData.name;
-    console.log([lengthArr, method, name]);
     return this.testCode(method, name, lengthArr);
   },
 
@@ -38,7 +36,7 @@ module.exports = {
     return {
       xAxis: lengthArr,
       rawData: results,
-      name: name,
+      name: name
     };
   },
 

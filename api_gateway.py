@@ -1,5 +1,5 @@
 import requests
-from flask import Flask, request, redirect, json
+from flask import Flask, request, redirect, json, jsonify
 
 ports = {
     'node': "8001",
@@ -34,19 +34,22 @@ def send():
     incoming_data = request.json
     test_params = incoming_data['lengthArr']
     responses = []
+    final_data = {}
     for key, request_data in incoming_data.items():
-        print(key, request_data)
         if key[0:4] != 'data':
             continue
+        print('______________________')
+        print(key, request_data['name'])
+        print('______________________')
         language = request_data['language']
         server = services[language]
         request_url = 'http://localhost:' + ports[server] + request.path
         outgoing_data = {'lengthArr': test_params, 'request_data': json.dumps(request_data)}
         res = requests.post(request_url, outgoing_data)
-        responses.append(res)
-        print(responses)
-        return "DONE"
-        
+        final_data[key] =  json.loads(res.content)
+        print(jsonify(final_data))
+    return jsonify(final_data)
+
 # @app.route('/api/algos', methods=['POST'])
 # def send():
 #     data = request.json
