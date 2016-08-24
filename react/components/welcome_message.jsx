@@ -42,7 +42,20 @@ const WelcomeMessage = React.createClass({
     }
   },
 
+  //get values from editor element and package into json request
+  parseEditor(el){
+    //not DRY.  REFACTOR.
+    const language = ace.edit(el).getSession().getMode().$id.match(/\w*$/)[0];
+    const text = ace.edit(el).getSession().getValue();
+    const name = text.match(/\s(.*?)\(/)[1];
+    let method;
+    if(language === 'javascript'){method = `var ${name} = ${text}`;}
+    if(language === 'python'){method = text;}
+    return {method: method, name: name, language: language}
+  },
+  //parse editors to compile request and send to backend
   runDemo(evt) {
+    //janky and not DRY.  REFACTOR.
     evt.preventDefault();
     const el1 = document.getElementById('editor-1');
     const el2 = document.getElementById('editor-2');
@@ -50,12 +63,10 @@ const WelcomeMessage = React.createClass({
     const qs = Library[`quickSortRec`]();
     ace.edit(el1).getSession().setValue(qs);
     ace.edit(el2).getSession().setValue(bs);
-    const name1 = `quickSort`;
-    const name2 = `bubbleSort`;
-    const method1 = `var ${name1} = ${qs}`;
-    const method2 = `var ${name2} = ${bs}`;
+    const data1 = this.parseEditor(el1);
+    const data2 = this.parseEditor(el2);
     const lengthArr = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000];
-    const data = {method1: method1, method2: method2, name1: name1, name2: name2, lengthArr: lengthArr};
+    const data = { data1: data1, data2: data2, lengthArr: lengthArr };
     ClientActions.sendMethods(data);
     this.props.closeModal();
   },
