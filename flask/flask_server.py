@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, json, jsonify
 import benchmark
 
 app = Flask(__name__)
@@ -7,16 +7,18 @@ app = Flask(__name__)
 def root():
     return('FLASK SERVER')
 
-@app.route('/api/algos', method=['POST'])
+@app.route('/api/algos', methods=['POST'])
 def run():
-    print(request)
-    print(params)
-    return('ALGO API')
-
-# @app.route('/bundle.js')
-
-# url_for('assets', filename='style.css')
-# url_for('assets', filename='bundle.js')
+    print(request.is_json)
+    data = request.get_json(force=True)
+    lengthArr = data['lengthArr']
+    request_data = data['request_data']
+    result = benchmark.handle_request(lengthArr, request_data)
+    print("RESULT")
+    print(result)
+    # print(json.loads(data))
+    # print(json.dumps(data))
+    return result
 
 if __name__ == "__main__":
-    app.run(port=int('8001'))
+    app.run(port=int('8002'))

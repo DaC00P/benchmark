@@ -12,7 +12,7 @@ module.exports = {
   // },
   receiveCode(codeObj) {
     const lengthArr = codeObj.lengthArr;
-    const requestData = JSON.parse(codeObj.request_data);
+    const requestData = codeObj.request_data;
     const method = requestData.method;
     const name = requestData.name;
     return this.testCode(method, name, lengthArr);

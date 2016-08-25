@@ -1,7 +1,32 @@
-import statistics
+import sort_library
+import ast
+from statistics import stdev, mean
 from collections import deque
 from time import time
 from random import randint, randrange
+
+def handle_request(int_array, request_data):
+    """Takes code string and converts to function object to be passed into
+    'run_test.' Called from server."""
+    code = request_data['method']
+    # print(code)
+    exec(code)
+    test_function = locals()[request_data['name']]
+    # print(test_function)
+    test_results = run_test(int_array, test_function)
+    print(test_results)
+    return test_results
+
+def run_test(int_array, test_function, iterations=1):
+    """runs benchmark test on arrays of length equal to ints in int_array.
+    called from 'handle_request'"""
+    results = []
+    for n in int_array:
+        # print(n)
+        # print(results)
+        data = benchmark(test_function, n, iterations)
+        results.append({"x": n, "y": data['avg']})
+    return results
 
 def random_array(length, min=0, max=10):
     """random_array(n, min=-1000000, max=1000000)
@@ -40,11 +65,8 @@ def analyze(bm_result):
     bm_result.sort()
     drop = len(bm_result) // 20
     arr = bm_result[drop:-drop]
-    avg = statistics.mean(arr)
-    std = statistics.stdev(arr)
+    avg, std = mean(arr), stdev(arr)
     return {'std': std, 'adj_avg': avg}
-# def run(test_function):
-#     benchmark(test_function, length=1000000)
 
 def python_sort(arr):
     """python library sort"""
@@ -82,11 +104,9 @@ def merge_sort(arr):
 def radix_sort(arr):
     pass
 
-def
-
-
 def run():
     pass
+
 #TESTING FUNCTION ALIASES
 ra = random_array
 bm = benchmark

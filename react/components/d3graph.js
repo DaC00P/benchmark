@@ -99,12 +99,18 @@ d3Chart.update = function(el, data){
   this.svg.append('text').text(data.name2).attr('class', 'function-label f2')
           .attr('x', svgWidth * 0.80).attr('y', svgHeight * 0.99);
   //plots points from data series 1
+  // for (var i = 0; i < data.rawdata1.length; i++) {
+  //
+  // }
   data.rawData1.forEach( (point, index) => {
     this.chart.append('circle').attr('class', 'data-point series-1')
       .attr('id', `1-${index}`).attr("cx", xScale(point.x)).attr("cy", yScale(point.y))
       .attr("r", 5).on('mouseover', d3Chart.mouseover).on('mouseout', d3Chart.mouseout);
   });
   //plots points from data series 2
+  // for (var i = 0; i < data.rawdata2.length; i++) {
+  //   data.rawdata2[i]
+  // }
   data.rawData2.forEach( (point, index) => {
     this.chart.append('circle').attr('class', 'data-point series-2')
       .attr('id', `2-${index}`).attr("cx", xScale(point.x)).attr("cy", yScale(point.y))
