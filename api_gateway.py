@@ -58,7 +58,7 @@ def send():
         res = requests.post(request_url, data=json.dumps(outgoing_data), headers=headers)
         print(res)
         final_data[key] =  json.loads(res.content)
-        # print(jsonify(final_data))
+        print(jsonify(final_data))
     return jsonify(final_data)
 
 # @app.route('/api/algos', methods=['POST'])
