@@ -232,6 +232,7 @@ if __name__ == "__main__":
     print('cs() => ', cs.__doc__)
     print('rs() => ', rs.__doc__)
     print('qs() => ', qs.__doc__)
+    print('hs() => ', hs.__doc__)
     print('bs() => ', bs.__doc__, '\n')
     print('METHODS, (ALIAS => METHOD):')
     print('ra() => ', ra.__doc__)
