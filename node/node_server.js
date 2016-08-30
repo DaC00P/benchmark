@@ -14,13 +14,18 @@ Server.post('/api/algos', function(req, res){
   res.send(data);
 });
 
+Server.listen( process.env.PORT || 8001, function() {
+  console.log('Server Running');
+});
+
+
 // FOR LIVE SERVER
 // Server.listen(process.env.PORT, function(){
 //   console.log('Server Running');
 // });
 
 
-// FOR DEV SERVER
-Server.listen(8001, function(){
-  console.log('Server Running');
-});
+// // FOR DEV SERVER
+// Server.listen(8001, function(){
+//   console.log('Server Running');
+// });

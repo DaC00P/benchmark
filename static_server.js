@@ -23,13 +23,18 @@ Server.get('/', function(req, res){
   res.sendFile(Path.join(__dirname + '/index.html'));
 });
 
+
+Server.listen( process.env.PORT || 8003, function(){
+  console.log('Server Running');
+});
+
 // FOR LIVE SERVER
 // Server.listen(process.env.PORT, function(){
 //   console.log('Server Running');
 // });
 
 
-// FOR DEV SERVER
-Server.listen(8003, function(){
-  console.log('Server Running');
-});
+// // FOR DEV SERVER
+// Server.listen(8003, function(){
+//   console.log('Server Running');
+// });
